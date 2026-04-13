@@ -1,8 +1,8 @@
 """Utilidades avanzadas para AI Mastery."""
 import time
 from collections.abc import Callable, Iterator
-from typing import Any
 from functools import wraps
+from typing import Any
 
 
 def timer(func: Callable[..., Any]) -> Callable[..., Any]:
