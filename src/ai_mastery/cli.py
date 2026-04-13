@@ -1,6 +1,8 @@
 """CLI principal de ai-mastery."""
 import os
+
 import click
+
 
 @click.group()
 def cli() -> None:
@@ -19,12 +21,12 @@ def init(nombre_proyecto: str) -> None:
     if os.path.exists(nombre_proyecto):
         click.echo(f"❌ Error: La carpeta '{nombre_proyecto}' ya existe.")
         return
-    
+
     os.makedirs(f"{nombre_proyecto}/src")
-    
+
     with open(f"{nombre_proyecto}/README.md", "w", encoding="utf-8") as f:
         f.write(f"# {nombre_proyecto}\n\nProyecto creado con AI Mastery.\n")
-    
+
     click.echo(f"✅ Proyecto '{nombre_proyecto}' creado con éxito.")
     click.echo(f"   Estructura: {nombre_proyecto}/src/")
 
@@ -33,10 +35,10 @@ def test() -> None:
     """Ejecuta los tests del proyecto con pytest."""
     import subprocess
     import sys
-    
+
     click.echo("🧪 Ejecutando tests...\n")
     result = subprocess.run([sys.executable, "-m", "pytest", "tests/"], capture_output=False)
-    
+
     if result.returncode == 0:
         click.echo("\n✅ Todos los tests pasaron.")
     else:
@@ -49,17 +51,17 @@ def run(script: str | None = None) -> None:
     """Ejecuta un script de demostración. Si no se especifica, ejecuta demo.py."""
     import subprocess
     import sys
-    
+
     if script is None:
         script = "scripts/demo.py"
-    
+
     if not os.path.exists(script):
         click.echo(f"❌ Error: El script '{script}' no existe.")
         sys.exit(1)
-    
+
     click.echo(f"🚀 Ejecutando script: {script}\n")
     result = subprocess.run([sys.executable, script], capture_output=False)
-    
+
     if result.returncode == 0:
         click.echo(f"\n✅ Script '{script}' ejecutado con éxito.")
     else:
