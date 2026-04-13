@@ -1,14 +1,13 @@
-﻿# AI Mastery
+﻿## 📈 Progreso
 
-[![CI](https://github.com/spl248/ai-mastery/actions/workflows/ci.yml/badge.svg)](https://github.com/spl248/ai-mastery/actions/workflows/ci.yml)
+- **Día 1:** Entorno, CI/CD, comando `hello`.
+- **Día 2:** Comandos `init`, `test`, `run` + tests unitarios.
+- **Día 3:** Decorador `@timer` y generador `read_large_file` en `utils.py`. CLI mejorado con medición de tiempo en `run`.
+## 🛠️ Utilidades
 
-Laboratorio de excelencia en IA Engineering. De cero a experto en automatización con IA.
+El módulo `ai_mastery.utils` proporciona herramientas avanzadas:
 
-## 🚀 Instalación
-
-```bash
-git clone https://github.com/spl248/ai-mastery.git
-cd ai-mastery
-python -m venv .venv
-.venv\Scripts\Activate.ps1   # Windows
-pip install -e .[dev]
+| Función | Descripción |
+| :--- | :--- |
+| `@timer` | Decorador que mide e imprime el tiempo de ejecución de una función. |
+| `read_large_file(path)` | Generador que lee archivos línea por línea sin cargarlos completamente en memoria. |

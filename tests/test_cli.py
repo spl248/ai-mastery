@@ -31,3 +31,54 @@ def test_init_fails_if_folder_exists(tmp_path) -> None:
 
     assert result.exit_code == 0
     assert f"❌ Error: La carpeta '{str(tmp_path / nombre_proyecto)}' ya existe." in result.output
+from unittest.mock import patch
+
+def test_test_command_runs_pytest() -> None:
+    """Test que verifica que el comando test llama a pytest."""
+    runner = CliRunner()
+    with patch("subprocess.run") as mock_run:
+        mock_run.return_value.returncode = 0
+        result = runner.invoke(cli, ["test"])
+        assert result.exit_code == 0
+        assert "🧪 Ejecutando tests..." in result.output
+        assert "✅ Todos los tests pasaron." in result.output
+        mock_run.assert_called_once()
+
+def test_run_command_executes_script(tmp_path) -> None:
+    """Test que verifica que el comando run ejecuta un script existente."""
+    runner = CliRunner()
+    script_file = tmp_path / "test_script.py"
+    script_file.write_text("print('Hello from test')")
+    
+    with patch("subprocess.run") as mock_run:
+        mock_run.return_value.returncode = 0
+        result = runner.invoke(cli, ["run", str(script_file)])
+        assert result.exit_code == 0
+        assert "🚀 Ejecutando script:" in result.output
+        assert "✅ Script" in result.output
+        mock_run.assert_called_once()
+
+def test_timer_decorator_measures_time() -> None:
+    """Test que verifica que @timer mide el tiempo y no rompe la función."""
+    from ai_mastery.utils import timer
+    import time
+    
+    @timer
+    def funcion_lenta() -> None:
+        time.sleep(0.1)
+    
+    funcion_lenta()
+    assert True
+
+def test_read_large_file_reads_content(tmp_path) -> None:
+    """Test que verifica que el generador lee el archivo por bloques."""
+    from ai_mastery.utils import read_large_file
+    
+    test_file = tmp_path / "test.txt"
+    contenido = "Línea 1\nLínea 2\nLínea 3\n"
+    test_file.write_text(contenido, encoding="utf-8")
+    
+    chunks = list(read_large_file(str(test_file), chunk_size=8))
+    resultado = "".join(chunks)
+    
+    assert resultado == contenido
