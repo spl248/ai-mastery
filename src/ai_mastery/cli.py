@@ -1,6 +1,7 @@
 ﻿"""CLI principal de ai-mastery."""
 import click
 
+
 @click.group()
 def cli() -> None:
     """AI Mastery — Tu laboratorio de excelencia en IA."""
