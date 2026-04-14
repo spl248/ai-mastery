@@ -5,22 +5,22 @@ Summary: Tu laboratorio de excelencia en IA Engineering
 Requires-Python: >=3.11
 Description-Content-Type: text/markdown
 Requires-Dist: click>=8.1.0
+Requires-Dist: feedparser>=6.0.0
 Provides-Extra: dev
 Requires-Dist: pytest>=8.0.0; extra == "dev"
 Requires-Dist: ruff>=0.3.0; extra == "dev"
 Requires-Dist: mypy>=1.8.0; extra == "dev"
 
-﻿# AI Mastery
+﻿## 📈 Progreso
 
-[![CI](https://github.com/spl248/ai-mastery/actions/workflows/ci.yml/badge.svg)](https://github.com/spl248/ai-mastery/actions/workflows/ci.yml)
+- **Día 1:** Entorno, CI/CD, comando `hello`.
+- **Día 2:** Comandos `init`, `test`, `run` + tests unitarios.
+- **Día 3:** Decorador `@timer` y generador `read_large_file` en `utils.py`. CLI mejorado con medición de tiempo en `run`.
+## 🛠️ Utilidades
 
-Laboratorio de excelencia en IA Engineering. De cero a experto en automatización con IA.
+El módulo `ai_mastery.utils` proporciona herramientas avanzadas:
 
-## 🚀 Instalación
-
-```bash
-git clone https://github.com/spl248/ai-mastery.git
-cd ai-mastery
-python -m venv .venv
-.venv\Scripts\Activate.ps1   # Windows
-pip install -e .[dev]
+| Función | Descripción |
+| :--- | :--- |
+| `@timer` | Decorador que mide e imprime el tiempo de ejecución de una función. |
+| `read_large_file(path)` | Generador que lee archivos línea por línea sin cargarlos completamente en memoria. |
