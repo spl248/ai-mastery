@@ -21,3 +21,13 @@ pip install -e .[dev]
 
 Próximamente en Hugging Face Spaces / Streamlit Cloud.  
 Mientras tanto, puedes ver el CLI en acción en este vídeo de 2 minutos: [Ver demo en YouTube](https://youtu.be/Zr2nZ2Q-USs)
+
+
+## 📈 Progreso
+
+- **Día 1:** Entorno, CI/CD, comando `hello`.
+- **Día 2:** Comandos `init`, `test`, `run` + tests unitarios.
+- **Día 3:** Decorador `@timer` y generador `read_large_file` en `utils.py`. CLI mejorado con medición de tiempo en `run`.
+- **Día 4:** Scraper de noticias IA con RSS y SQLite. Comandos `scrape` y `search`.
+- **Día 5 (Viernes de Ajuste):** Documentación profesional (`LESSONS.md`), pulido de README y demo en vídeo.
+- **Artículo Medium:** [Cómo construí un scraper de noticias con IA en 5 días](https://medium.com/p/20d7a775fb7a)
