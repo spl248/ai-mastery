@@ -1,4 +1,4 @@
-﻿# AI Mastery
+# AI Mastery
 
 [![CI](https://github.com/spl248/ai-mastery/actions/workflows/ci.yml/badge.svg)](https://github.com/spl248/ai-mastery/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -15,3 +15,9 @@ cd ai-mastery
 python -m venv .venv
 .venv\Scripts\Activate.ps1   # Windows
 pip install -e .[dev]
+```
+
+## 🎬 Demo en Vivo
+
+Próximamente en Hugging Face Spaces / Streamlit Cloud.  
+Mientras tanto, puedes ver el CLI en acción en este vídeo de 2 minutos: [Ver demo en YouTube](https://youtu.be/Zr2nZ2Q-USs)
