@@ -34,7 +34,7 @@ def embed(text: str, model: str = "tinyllama") -> Optional[list[float]]:
     """
     try:
         response = ollama.embeddings(model=model, prompt=text)
-        return response["embedding"]
+        return list(response["embedding"])
     except Exception as e:
         print(f"❌ Error al obtener embedding de Ollama: {e}")
         return None
