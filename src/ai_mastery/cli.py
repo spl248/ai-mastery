@@ -3,9 +3,8 @@ import os
 
 import click
 
-from ai_mastery import scraper
+from ai_mastery import ollama_client, scraper
 from ai_mastery.utils import timer
-from ai_mastery import ollama_client
 
 
 @click.group()
