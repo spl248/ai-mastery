@@ -142,5 +142,23 @@ def ask(prompt: str, model: str) -> None:
         click.echo("❌ No se pudo obtener una respuesta del modelo.")
 
 
+@cli.command()
+@click.argument("text")
+@click.option(
+    "--model",
+    default="tinyllama",
+    help="Modelo de Ollama a usar para embeddings",
+)
+def embed(text: str, model: str) -> None:
+    """Obtiene el vector de embedding de un texto usando Ollama."""
+    click.echo(f"🧮 Obteniendo embedding para: {text[:50]}...")
+    embedding = ollama_client.embed(text, model=model)
+    if embedding:
+        click.echo(f"✅ Embedding obtenido. Dimensión: {len(embedding)}")
+        click.echo(f"Primeros 5 valores: {embedding[:5]}")
+    else:
+        click.echo("❌ No se pudo obtener el embedding.")
+
+
 if __name__ == "__main__":
     cli()

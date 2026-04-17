@@ -20,3 +20,21 @@ def generate(prompt: str, model: str = "tinyllama") -> Optional[str]:
     except Exception as e:
         print(f"❌ Error al comunicarse con Ollama: {e}")
         return None
+
+
+def embed(text: str, model: str = "tinyllama") -> Optional[list[float]]:
+    """Obtiene el vector de embedding para un texto usando Ollama.
+
+    Args:
+        text: El texto a convertir en embedding.
+        model: El nombre del modelo a usar (por defecto 'tinyllama').
+
+    Returns:
+        Una lista de floats representando el embedding, o None si ocurre un error.
+    """
+    try:
+        response = ollama.embeddings(model=model, prompt=text)
+        return response["embedding"]
+    except Exception as e:
+        print(f"❌ Error al obtener embedding de Ollama: {e}")
+        return None
