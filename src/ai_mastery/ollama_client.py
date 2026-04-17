@@ -16,7 +16,7 @@ def generate(prompt: str, model: str = "tinyllama") -> Optional[str]:
     """
     try:
         response = ollama.generate(model=model, prompt=prompt)
-        return response["response"].strip()
+        return str(response["response"]).strip()
     except Exception as e:
         print(f"❌ Error al comunicarse con Ollama: {e}")
         return None
