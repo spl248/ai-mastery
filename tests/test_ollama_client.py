@@ -1,8 +1,10 @@
 """Tests para el cliente de Ollama."""
 from unittest.mock import patch
+
 from click.testing import CliRunner
-from ai_mastery.cli import cli
+
 from ai_mastery import ollama_client
+from ai_mastery.cli import cli
 
 
 def test_generate_returns_response() -> None:
