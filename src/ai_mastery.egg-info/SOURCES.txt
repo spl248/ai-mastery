@@ -3,6 +3,7 @@ pyproject.toml
 src/ai-mastery/utils.py
 src/ai_mastery/__init__.py
 src/ai_mastery/cli.py
+src/ai_mastery/scraper.py
 src/ai_mastery/utils.py
 src/ai_mastery.egg-info/PKG-INFO
 src/ai_mastery.egg-info/SOURCES.txt
@@ -10,3 +11,4 @@ src/ai_mastery.egg-info/dependency_links.txt
 src/ai_mastery.egg-info/requires.txt
 src/ai_mastery.egg-info/top_level.txt
 tests/test_cli.py
+tests/test_scraper.py

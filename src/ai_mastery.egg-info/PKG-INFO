@@ -6,21 +6,42 @@ Requires-Python: >=3.11
 Description-Content-Type: text/markdown
 Requires-Dist: click>=8.1.0
 Requires-Dist: feedparser>=6.0.0
+Requires-Dist: ollama>=0.5.0
 Provides-Extra: dev
 Requires-Dist: pytest>=8.0.0; extra == "dev"
 Requires-Dist: ruff>=0.3.0; extra == "dev"
 Requires-Dist: mypy>=1.8.0; extra == "dev"
 
-﻿## 📈 Progreso
+# AI Mastery
+
+[![CI](https://github.com/spl248/ai-mastery/actions/workflows/ci.yml/badge.svg)](https://github.com/spl248/ai-mastery/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+**AI Mastery** es un laboratorio público de excelencia en Ingeniería de IA.  
+Construido desde cero como parte de un desafío personal de 180 días para convertirme en el mejor ingeniero de automatizaciones con IA, sin título ni experiencia previa.  
+Cada línea de código está testeada, documentada y desplegada con CI/CD profesional.
+
+## 🚀 Instalación
+
+```bash
+git clone https://github.com/spl248/ai-mastery.git
+cd ai-mastery
+python -m venv .venv
+.venv\Scripts\Activate.ps1   # Windows
+pip install -e .[dev]
+```
+
+## 🎬 Demo en Vivo
+
+Próximamente en Hugging Face Spaces / Streamlit Cloud.  
+Mientras tanto, puedes ver el CLI en acción en este vídeo de 2 minutos: [Ver demo en YouTube](https://youtu.be/Zr2nZ2Q-USs)
+
+
+## 📈 Progreso
 
 - **Día 1:** Entorno, CI/CD, comando `hello`.
 - **Día 2:** Comandos `init`, `test`, `run` + tests unitarios.
 - **Día 3:** Decorador `@timer` y generador `read_large_file` en `utils.py`. CLI mejorado con medición de tiempo en `run`.
-## 🛠️ Utilidades
-
-El módulo `ai_mastery.utils` proporciona herramientas avanzadas:
-
-| Función | Descripción |
-| :--- | :--- |
-| `@timer` | Decorador que mide e imprime el tiempo de ejecución de una función. |
-| `read_large_file(path)` | Generador que lee archivos línea por línea sin cargarlos completamente en memoria. |
+- **Día 4:** Scraper de noticias IA con RSS y SQLite. Comandos `scrape` y `search`.
+- **Día 5 (Viernes de Ajuste):** Documentación profesional (`LESSONS.md`), pulido de README y demo en vídeo.
+- **Artículo Medium:** [Cómo construí un scraper de noticias con IA en 5 días](https://medium.com/p/20d7a775fb7a)

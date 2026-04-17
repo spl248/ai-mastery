@@ -5,6 +5,7 @@ import click
 
 from ai_mastery import scraper
 from ai_mastery.utils import timer
+from ai_mastery import ollama_client
 
 
 @click.group()
@@ -12,10 +13,12 @@ def cli() -> None:
     """AI Mastery — Tu laboratorio de excelencia en IA."""
     pass
 
+
 @cli.command()
 def hello() -> None:
     """Comando de prueba."""
     click.echo("🔥 AI Mastery activado. Empieza la leyenda.")
+
 
 @cli.command()
 @click.argument("nombre_proyecto")
@@ -33,6 +36,7 @@ def init(nombre_proyecto: str) -> None:
     click.echo(f"✅ Proyecto '{nombre_proyecto}' creado con éxito.")
     click.echo(f"   Estructura: {nombre_proyecto}/src/")
 
+
 @cli.command()
 def test() -> None:
     """Ejecuta los tests del proyecto con pytest."""
@@ -40,13 +44,16 @@ def test() -> None:
     import sys
 
     click.echo("🧪 Ejecutando tests...\n")
-    result = subprocess.run([sys.executable, "-m", "pytest", "tests/"], capture_output=False)
+    result = subprocess.run(
+        [sys.executable, "-m", "pytest", "tests/"], capture_output=False
+    )
 
     if result.returncode == 0:
         click.echo("\n✅ Todos los tests pasaron.")
     else:
         click.echo("\n❌ Algunos tests fallaron. Revisa la salida anterior.")
         sys.exit(result.returncode)
+
 
 @cli.command()
 @click.argument("script", required=False)
@@ -72,8 +79,11 @@ def run(script: str | None = None) -> None:
         click.echo(f"\n❌ El script '{script}' falló con código {result.returncode}.")
         sys.exit(result.returncode)
 
+
 @cli.command()
-@click.option("--feed", default="https://techcrunch.com/feed/", help="URL del feed RSS")
+@click.option(
+    "--feed", default="https://techcrunch.com/feed/", help="URL del feed RSS"
+)
 @click.option("--db", default="news.db", help="Archivo de base de datos SQLite")
 def scrape(feed: str, db: str) -> None:
     """Descarga artículos de un feed RSS y los guarda en la base de datos."""
@@ -83,19 +93,24 @@ def scrape(feed: str, db: str) -> None:
     saved = scraper.save_articles(db, articles)
     click.echo(f"✅ {saved} artículos nuevos guardados en {db}.")
 
+
 @cli.command()
 @click.argument("keyword")
 @click.option("--db", default="news.db", help="Archivo de base de datos SQLite")
 def search(keyword: str, db: str) -> None:
     """Busca noticias en la base de datos por palabra clave."""
     import sqlite3
+
     conn = sqlite3.connect(db)
     cursor = conn.cursor()
-    cursor.execute("""
+    cursor.execute(
+        """
         SELECT title, link, published FROM news
         WHERE title LIKE ? OR summary LIKE ?
         ORDER BY published DESC
-    """, (f"%{keyword}%", f"%{keyword}%"))
+    """,
+        (f"%{keyword}%", f"%{keyword}%"),
+    )
     results = cursor.fetchall()
     conn.close()
     if not results:
@@ -108,6 +123,25 @@ def search(keyword: str, db: str) -> None:
         if published:
             click.echo(f"   {published}")
         click.echo()
+
+
+@cli.command()
+@click.argument("prompt")
+@click.option(
+    "--model",
+    default="tinyllama",
+    help="Modelo de Ollama a usar (tinyllama, llama3, etc.)",
+)
+def ask(prompt: str, model: str) -> None:
+    """Envía una pregunta al modelo de IA local (Ollama)."""
+    click.echo(f"🤖 Preguntando a {model}: {prompt}")
+    click.echo("⏳ Generando respuesta (puede tardar unos segundos)...\n")
+    response = ollama_client.generate(prompt=prompt, model=model)
+    if response:
+        click.echo(f"📝 Respuesta:\n{response}")
+    else:
+        click.echo("❌ No se pudo obtener una respuesta del modelo.")
+
 
 if __name__ == "__main__":
     cli()
