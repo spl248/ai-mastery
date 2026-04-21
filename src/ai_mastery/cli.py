@@ -3,7 +3,8 @@ import os
 
 import click
 
-from ai_mastery import agent, ollama_client, scraper
+from ai_mastery import ollama_client, scraper
+from ai_mastery import agent as agent_module
 from ai_mastery.utils import timer
 
 
@@ -167,11 +168,11 @@ def embed(text: str, model: str) -> None:
     default="llama3.2",
     help="Modelo de Ollama a usar para el agente",
 )
-def agent_cmd(question: str, model: str) -> None:
+def agent(question: str, model: str) -> None:
     """Envía una pregunta al agente inteligente (LangChain + Ollama)."""
     click.echo(f"🤖 Preguntando al agente ({model}): {question}")
     click.echo("⏳ El agente está pensando (puede tardar unos segundos)...\n")
-    response = agent.ask_agent(question, model=model)
+    response = agent_module.ask_agent(question, model=model)
     click.echo(f"📝 Respuesta del agente:\n{response}")
 
 
