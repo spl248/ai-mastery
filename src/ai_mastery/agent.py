@@ -1,6 +1,5 @@
 """Agente inteligente con LangChain y Ollama (LangChain 0.3.x con AgentExecutor)."""
 import math
-
 from langchain.agents import AgentExecutor, create_tool_calling_agent
 from langchain.tools import tool
 from langchain_core.prompts import ChatPromptTemplate
@@ -25,7 +24,7 @@ def web_search(query: str) -> str:
     return f"[Resultados simulados para: '{query}'] Esta es una búsqueda de demostración."
 
 
-def create_agent(model: str = "llama3.2"):
+def create_agent(model: str = "llama3.2") -> AgentExecutor:
     """Crea un agente LangChain con herramientas de cálculo y búsqueda.
     Devuelve un AgentExecutor listo para recibir preguntas.
     """
@@ -53,4 +52,4 @@ def ask_agent(question: str, model: str = "llama3.2") -> str:
     """Envía una pregunta al agente y devuelve la respuesta."""
     agent_executor = create_agent(model)
     result = agent_executor.invoke({"input": question})
-    return result["output"]
+    return str(result["output"])
