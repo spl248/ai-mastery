@@ -3,8 +3,8 @@ import os
 
 import click
 
-from ai_mastery import ollama_client, scraper
 from ai_mastery import agent as agent_module
+from ai_mastery import ollama_client, scraper
 from ai_mastery.utils import timer
 
 
