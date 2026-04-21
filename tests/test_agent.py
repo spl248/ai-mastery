@@ -1,8 +1,10 @@
 """Tests para el módulo agente."""
-from unittest.mock import patch, MagicMock
+from unittest.mock import MagicMock, patch
+
 from click.testing import CliRunner
-from ai_mastery.cli import cli
+
 from ai_mastery import agent
+from ai_mastery.cli import cli
 
 
 def test_create_agent_returns_agent_executor() -> None:
