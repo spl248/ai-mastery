@@ -1,5 +1,6 @@
 """Agente inteligente con LangChain y Ollama (LangChain 0.3.x con AgentExecutor)."""
 import math
+
 from langchain.agents import AgentExecutor, create_tool_calling_agent
 from langchain.tools import tool
 from langchain_core.prompts import ChatPromptTemplate
