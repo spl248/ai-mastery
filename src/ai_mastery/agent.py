@@ -27,7 +27,6 @@ def web_search(query: str) -> str:
 
 def create_agent(model: str = "llama3.2"):
     """Crea un agente LangChain con herramientas de cálculo y búsqueda.
-    
     Devuelve un AgentExecutor listo para recibir preguntas.
     """
     llm = ChatOllama(model=model, temperature=0)
