@@ -6,6 +6,7 @@ import click
 from ai_mastery import agent as agent_module
 from ai_mastery import memory, ollama_client, scraper
 from ai_mastery.utils import timer
+from ai_mastery import assistant
 
 
 @click.group()
@@ -230,7 +231,37 @@ def query(question: str, collection: str, db_dir: str, n_results: int) -> None:
     click.echo(f"🔍 Resultados para '{question}':\n")
     for i, res in enumerate(results, 1):
         click.echo(f"{i}. {res['content'][:200]}... (distancia: {res['distance']:.4f})")
-
-
+@cli.command()
+@click.argument("feed_url")
+@click.argument("question")
+@click.option(
+    "--collection",
+    default="research_assistant",
+    help="Nombre de la colección en ChromaDB",
+)
+@click.option(
+    "--db-dir",
+    default="./chroma_research",
+    help="Directorio para persistir ChromaDB",
+)
+@click.option(
+    "--model",
+    default="llama3.2",
+    help="Modelo de Ollama para el agente",
+)
+def research(feed_url: str, question: str, collection: str, db_dir: str, model: str) -> None:
+    """Investiga un feed RSS y responde una pregunta usando IA."""
+    click.echo(f"🔍 Analizando feed: {feed_url}")
+    click.echo(f"❓ Pregunta: {question}")
+    click.echo("⏳ Descargando artículos, indexando y generando respuesta...\n")
+    response = assistant.research_from_feed(
+        feed_url=feed_url,
+        question=question,
+        collection_name=collection,
+        db_path=db_dir,
+        model=model,
+    )
+    click.echo("📝 Informe de investigación:\n")
+    click.echo(response)
 if __name__ == "__main__":
     cli()
