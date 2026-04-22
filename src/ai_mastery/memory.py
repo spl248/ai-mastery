@@ -1,5 +1,4 @@
 """Módulo de memoria vectorial con ChromaDB y Ollama."""
-import os
 from typing import Optional
 
 import chromadb
@@ -25,19 +24,21 @@ class MemoryManager:
             metadata={"hnsw:space": "cosine"},
         )
 
-    def add_documents(self, documents: list[str], metadatas: Optional[list[dict]] = None) -> int:
+    def add_documents(
+        self, documents: list[str], metadatas: Optional[list[dict]] = None
+    ) -> int:
         """Añade una lista de documentos a la memoria vectorial.
-        
+
         Args:
             documents: Lista de textos a almacenar.
             metadatas: Lista opcional de diccionarios con metadatos (fuente, fecha, etc.).
-        
+
         Returns:
             El número de documentos añadidos.
         """
         if not documents:
             return 0
-        
+
         ids = [f"doc_{i}_{hash(doc) % 10000}" for i, doc in enumerate(documents)]
         embeddings = [self._get_embedding(doc) for doc in documents]
         valid_docs = []
@@ -63,11 +64,11 @@ class MemoryManager:
 
     def query(self, query_text: str, n_results: int = 5) -> list[dict]:
         """Busca los documentos más relevantes para una consulta.
-        
+
         Args:
             query_text: La pregunta o texto de búsqueda.
             n_results: Número de resultados a devolver.
-        
+
         Returns:
             Una lista de diccionarios con 'content', 'metadata' y 'distance'.
         """
@@ -90,6 +91,7 @@ class MemoryManager:
     def _get_embedding(self, text: str) -> Optional[list[float]]:
         """Obtiene el embedding de un texto usando Ollama."""
         from ai_mastery import ollama_client
+
         return ollama_client.embed(text, model=self.embedding_model)
 
 
