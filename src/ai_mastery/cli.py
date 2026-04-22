@@ -4,8 +4,10 @@ import os
 import click
 
 from ai_mastery import agent as agent_module
-from ai_mastery import assistant, memory, ollama_client, scraper
+from ai_mastery import memory, ollama_client, scraper
 from ai_mastery.utils import timer
+from ai_mastery import assistant
+from ai_mastery import scraper_web
 
 
 @click.group()
@@ -165,7 +167,7 @@ def embed(text: str, model: str) -> None:
 @click.argument("question")
 @click.option(
     "--model",
-    default="llama3.2",
+    default="mistral",
     help="Modelo de Ollama a usar para el agente",
 )
 def agent(question: str, model: str) -> None:
@@ -230,6 +232,8 @@ def query(question: str, collection: str, db_dir: str, n_results: int) -> None:
     click.echo(f"🔍 Resultados para '{question}':\n")
     for i, res in enumerate(results, 1):
         click.echo(f"{i}. {res['content'][:200]}... (distancia: {res['distance']:.4f})")
+
+
 @cli.command()
 @click.argument("feed_url")
 @click.argument("question")
@@ -245,7 +249,7 @@ def query(question: str, collection: str, db_dir: str, n_results: int) -> None:
 )
 @click.option(
     "--model",
-    default="llama3.2",
+    default="mistral",
     help="Modelo de Ollama para el agente",
 )
 def research(feed_url: str, question: str, collection: str, db_dir: str, model: str) -> None:
@@ -262,5 +266,28 @@ def research(feed_url: str, question: str, collection: str, db_dir: str, model: 
     )
     click.echo("📝 Informe de investigación:\n")
     click.echo(response)
+
+
+@cli.command()
+@click.option(
+    "--url",
+    default="https://techcrunch.com/",
+    help="URL de la página web a analizar",
+)
+def web_scrape(url: str) -> None:
+    """Extrae y muestra los títulos de una página web usando Playwright."""
+    click.echo(f"🌐 Accediendo a: {url}")
+    click.echo("⏳ Extrayendo títulos...\n")
+    titles = scraper_web.fetch_page_titles(url)
+    if titles:
+        click.echo(f"📰 Se encontraron {len(titles)} títulos:\n")
+        for i, title in enumerate(titles[:10], 1):
+            click.echo(f"{i}. {title}")
+        if len(titles) > 10:
+            click.echo(f"... y {len(titles) - 10} más.")
+    else:
+        click.echo("❌ No se pudieron extraer títulos.")
+
+
 if __name__ == "__main__":
     cli()

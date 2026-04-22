@@ -11,7 +11,7 @@ def test_create_agent_returns_agent_executor() -> None:
     """Test que verifica que create_agent devuelve un AgentExecutor."""
     mock_llm = MagicMock()
     with patch("ai_mastery.agent.ChatOllama", return_value=mock_llm):
-        agent_executor = agent.create_agent(model="llama3.2")
+        agent_executor = agent.create_agent(model="mistral")
         assert agent_executor is not None
         assert hasattr(agent_executor, "invoke")
 
@@ -32,15 +32,15 @@ def test_agent_cmd_invokes_ask_agent() -> None:
     with patch("ai_mastery.agent.ask_agent", return_value="345") as mock_ask:
         result = runner.invoke(cli, ["agent", "¿Cuánto es 15 * 23?"])
         assert result.exit_code == 0
-        assert "🤖 Preguntando al agente (llama3.2)" in result.output
+        assert "🤖 Preguntando al agente (mistral)" in result.output
         assert "📝 Respuesta del agente:" in result.output
         assert "345" in result.output
-        mock_ask.assert_called_once_with("¿Cuánto es 15 * 23?", model="llama3.2")
+        mock_ask.assert_called_once_with("¿Cuánto es 15 * 23?", model="mistral")
 
 
 def test_agent_cmd_respects_model_option() -> None:
     """Test que verifica que el comando agent respeta la opción --model."""
     runner = CliRunner()
     with patch("ai_mastery.agent.ask_agent", return_value="Respuesta") as mock_ask:
-        runner.invoke(cli, ["agent", "--model", "mistral", "Hola"])
-        mock_ask.assert_called_once_with("Hola", model="mistral")
+        runner.invoke(cli, ["agent", "--model", "tinyllama", "Hola"])
+        mock_ask.assert_called_once_with("Hola", model="tinyllama")

@@ -25,7 +25,7 @@ def web_search(query: str) -> str:
     return f"[Resultados simulados para: '{query}'] Esta es una búsqueda de demostración."
 
 
-def create_agent(model: str = "llama3.2") -> AgentExecutor:
+def create_agent(model: str = "mistral") -> AgentExecutor:
     """Crea un agente LangChain con herramientas de cálculo y búsqueda.
     Devuelve un AgentExecutor listo para recibir preguntas.
     """
@@ -49,7 +49,7 @@ def create_agent(model: str = "llama3.2") -> AgentExecutor:
     return agent_executor
 
 
-def ask_agent(question: str, model: str = "llama3.2") -> str:
+def ask_agent(question: str, model: str = "mistral") -> str:
     """Envía una pregunta al agente y devuelve la respuesta."""
     agent_executor = create_agent(model)
     result = agent_executor.invoke({"input": question})
