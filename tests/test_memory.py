@@ -1,8 +1,10 @@
 """Tests para el módulo de memoria vectorial."""
-from unittest.mock import patch, MagicMock
+from unittest.mock import MagicMock, patch
+
 from click.testing import CliRunner
-from ai_mastery.cli import cli
+
 from ai_mastery import memory
+from ai_mastery.cli import cli
 
 
 def test_memory_manager_add_documents() -> None:
@@ -11,8 +13,13 @@ def test_memory_manager_add_documents() -> None:
     mock_client = MagicMock()
     mock_client.get_or_create_collection.return_value = mock_collection
     with patch("chromadb.PersistentClient", return_value=mock_client):
-        with patch("ai_mastery.memory.MemoryManager._get_embedding", return_value=[0.1, 0.2, 0.3]):
-            manager = memory.MemoryManager(collection_name="test", persist_directory=":memory:")
+        with patch(
+            "ai_mastery.memory.MemoryManager._get_embedding",
+            return_value=[0.1, 0.2, 0.3],
+        ):
+            manager = memory.MemoryManager(
+                collection_name="test", persist_directory=":memory:"
+            )
             manager.client = mock_client
             manager.collection = mock_collection
             docs = ["Documento 1", "Documento 2"]
@@ -32,8 +39,13 @@ def test_memory_manager_query() -> None:
     mock_client = MagicMock()
     mock_client.get_or_create_collection.return_value = mock_collection
     with patch("chromadb.PersistentClient", return_value=mock_client):
-        with patch("ai_mastery.memory.MemoryManager._get_embedding", return_value=[0.1, 0.2, 0.3]):
-            manager = memory.MemoryManager(collection_name="test", persist_directory=":memory:")
+        with patch(
+            "ai_mastery.memory.MemoryManager._get_embedding",
+            return_value=[0.1, 0.2, 0.3],
+        ):
+            manager = memory.MemoryManager(
+                collection_name="test", persist_directory=":memory:"
+            )
             manager.client = mock_client
             manager.collection = mock_collection
             results = manager.query("consulta")
@@ -47,7 +59,6 @@ def test_ingest_command() -> None:
     with runner.isolated_filesystem():
         with open("docs.txt", "w", encoding="utf-8") as f:
             f.write("Línea 1\nLínea 2\n")
-        # Mockear MemoryManager completo para evitar inicializar ChromaDB
         with patch("ai_mastery.memory.MemoryManager") as MockManager:
             mock_instance = MagicMock()
             mock_instance.add_documents.return_value = 2
@@ -64,7 +75,6 @@ def test_query_command() -> None:
         {"content": "Resultado 1", "distance": 0.1, "metadata": {}},
         {"content": "Resultado 2", "distance": 0.2, "metadata": {}},
     ]
-    # Mockear MemoryManager completo
     with patch("ai_mastery.memory.MemoryManager") as MockManager:
         mock_instance = MagicMock()
         mock_instance.query.return_value = mock_results
