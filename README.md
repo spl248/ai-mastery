@@ -34,6 +34,8 @@ Mientras tanto, puedes ver el CLI en acción en este vídeo de 2 minutos: [Ver d
 | `agent "PREGUNTA"` | Envía una pregunta al agente inteligente (LangChain + Ollama) | `python src/ai_mastery/cli.py agent "¿Cuánto es 15 * 23?"` |
 | `ingest ARCHIVO` | Ingiere documentos desde un archivo de texto a la memoria vectorial | `python src/ai_mastery/cli.py ingest docs.txt` |
 | `query "PREGUNTA"` | Busca información relevante en la memoria vectorial | `python src/ai_mastery/cli.py query "vehículo veloz"` |
+| `research FEED "PREGUNTA"` | Investiga un feed RSS y genera un informe con IA | `python src/ai_mastery/cli.py research "URL" "¿Qué noticias hay sobre IA?"` |
+
 ## 🛠️ Utilidades
 
 El módulo `ai_mastery.utils` y `ai_mastery.ollama_client` proporcionan herramientas avanzadas:
@@ -84,3 +86,6 @@ ai-mastery/
 - **Día 6 (Subsanación):** Función `embed()` y comando `embed` para obtención de embeddings con Ollama.
 - **Día 7:** Agente inteligente con LangChain. Herramientas `calculator` y `web_search`.
 - **Día 8:** Memoria vectorial con ChromaDB. Comandos `ingest` y `query` para búsqueda semántica.
+- **Día 9:** Asistente de investigación autónomo (scraper + memoria + agente). Comando `research`.
+- **Día 10 (Viernes de Ajuste):** Publicación en LinkedIn anunciando el asistente de investigación.
+  **Post LinkedIn:** [Ver publicación](https://www.linkedin.com/feed/update/urn:li:activity:7452752357458694144/)
