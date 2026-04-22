@@ -4,7 +4,7 @@ import os
 import click
 
 from ai_mastery import agent as agent_module
-from ai_mastery import assistant, memory, ollama_client, scraper, scraper_web
+from ai_mastery import assistant, memory, ollama_client, scraper
 from ai_mastery.utils import timer
 
 
@@ -274,6 +274,8 @@ def research(feed_url: str, question: str, collection: str, db_dir: str, model: 
 )
 def web_scrape(url: str) -> None:
     """Extrae y muestra los títulos de una página web usando Playwright."""
+    from ai_mastery import scraper_web  # Importación local para evitar dependencia en CI
+
     click.echo(f"🌐 Accediendo a: {url}")
     click.echo("⏳ Extrayendo títulos...\n")
     titles = scraper_web.fetch_page_titles(url)
