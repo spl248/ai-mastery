@@ -3,12 +3,14 @@ from unittest.mock import MagicMock, patch
 
 from click.testing import CliRunner
 
-from ai_mastery import scraper_web
 from ai_mastery.cli import cli
 
 
 def test_fetch_page_titles_success() -> None:
     """Test que verifica que fetch_page_titles extrae títulos correctamente."""
+    # Importamos scraper_web dentro del test para evitar la carga en CI
+    from ai_mastery import scraper_web
+
     mock_titles = ["Título 1", "Título 2", "Título 3"]
     with patch("ai_mastery.scraper_web.sync_playwright") as mock_playwright:
         mock_browser = MagicMock()
@@ -25,6 +27,8 @@ def test_fetch_page_titles_success() -> None:
 
 def test_fetch_page_titles_error() -> None:
     """Test que verifica que fetch_page_titles devuelve None si hay un error."""
+    from ai_mastery import scraper_web
+
     with patch("ai_mastery.scraper_web.sync_playwright") as mock_playwright:
         mock_playwright.return_value.__enter__.side_effect = Exception("Error simulado")
         titles = scraper_web.fetch_page_titles("http://fake.url")
