@@ -10,6 +10,7 @@ Requires-Dist: ollama>=0.5.0
 Requires-Dist: langchain<0.4.0,>=0.3.3
 Requires-Dist: langchain-ollama<0.3.0,>=0.2.0
 Requires-Dist: langchain-community<0.4.0,>=0.3.3
+Requires-Dist: chromadb>=0.5.0
 Provides-Extra: dev
 Requires-Dist: pytest>=8.0.0; extra == "dev"
 Requires-Dist: ruff>=0.3.0; extra == "dev"
@@ -48,6 +49,7 @@ Mientras tanto, puedes ver el CLI en acción en este vídeo de 2 minutos: [Ver d
 | `scrape` | Descarga artículos de un feed RSS y los guarda en SQLite | `python src/ai_mastery/cli.py scrape --feed URL` |
 | `search PALABRA` | Busca noticias en la base de datos por palabra clave | `python src/ai_mastery/cli.py search Microsoft` |
 | `ask "PREGUNTA"` | Envía una pregunta al modelo de IA local (Ollama) | `python src/ai_mastery/cli.py ask "¿Qué es Ollama?"` |
+| `agent "PREGUNTA"` | Envía una pregunta al agente inteligente (LangChain + Ollama) | `python src/ai_mastery/cli.py agent "¿Cuánto es 15 * 23?"` |
 
 ## 🛠️ Utilidades
 
@@ -97,3 +99,4 @@ ai-mastery/
 - **Artículo Medium:** [Cómo construí un scraper de noticias con IA en 5 días](https://medium.com/p/20d7a775fb7a)
 - **Día 6:** Cliente Ollama integrado. Comando `ask` para consultas a IA local.
 - **Día 6 (Subsanación):** Función `embed()` y comando `embed` para obtención de embeddings con Ollama.
+- **Día 7:** Agente inteligente con LangChain. Herramientas `calculator` y `web_search`.

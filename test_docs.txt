@@ -1,0 +1,5 @@
+﻿El Ferrari es un coche deportivo italiano.
+Python es un lenguaje de programación interpretado.
+La luna orbita alrededor de la Tierra.
+LangChain permite crear agentes inteligentes.
+Ollama ejecuta modelos de lenguaje localmente.

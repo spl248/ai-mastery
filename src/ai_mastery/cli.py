@@ -4,7 +4,7 @@ import os
 import click
 
 from ai_mastery import agent as agent_module
-from ai_mastery import ollama_client, scraper
+from ai_mastery import memory, ollama_client, scraper
 from ai_mastery.utils import timer
 
 
@@ -174,6 +174,62 @@ def agent(question: str, model: str) -> None:
     click.echo("⏳ El agente está pensando (puede tardar unos segundos)...\n")
     response = agent_module.ask_agent(question, model=model)
     click.echo(f"📝 Respuesta del agente:\n{response}")
+
+
+@cli.command()
+@click.argument("path")
+@click.option(
+    "--collection",
+    default="ai_mastery_docs",
+    help="Nombre de la colección en ChromaDB",
+)
+@click.option(
+    "--db-dir",
+    default="./chroma_db",
+    help="Directorio donde persistir la base de datos",
+)
+def ingest(path: str, collection: str, db_dir: str) -> None:
+    """Ingesta documentos desde un archivo de texto (uno por línea) a la memoria vectorial."""
+    if not os.path.exists(path):
+        click.echo(f"❌ Error: El archivo '{path}' no existe.")
+        return
+    with open(path, "r", encoding="utf-8") as f:
+        lines = [line.strip() for line in f if line.strip()]
+    if not lines:
+        click.echo("❌ El archivo está vacío.")
+        return
+    manager = memory.MemoryManager(collection, db_dir)
+    count = manager.add_documents(lines)
+    click.echo(f"✅ {count} documentos ingeridos en la colección '{collection}'.")
+
+
+@cli.command()
+@click.argument("question")
+@click.option(
+    "--collection",
+    default="ai_mastery_docs",
+    help="Nombre de la colección en ChromaDB",
+)
+@click.option(
+    "--db-dir",
+    default="./chroma_db",
+    help="Directorio donde persistir la base de datos",
+)
+@click.option(
+    "--n-results",
+    default=3,
+    help="Número de resultados a mostrar",
+)
+def query(question: str, collection: str, db_dir: str, n_results: int) -> None:
+    """Busca información relevante en la memoria vectorial."""
+    manager = memory.MemoryManager(collection, db_dir)
+    results = manager.query(question, n_results)
+    if not results:
+        click.echo("No se encontraron documentos relevantes.")
+        return
+    click.echo(f"🔍 Resultados para '{question}':\n")
+    for i, res in enumerate(results, 1):
+        click.echo(f"{i}. {res['content'][:200]}... (distancia: {res['distance']:.4f})")
 
 
 if __name__ == "__main__":
