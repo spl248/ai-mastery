@@ -1,8 +1,10 @@
 """Tests para el módulo scraper_web."""
-from unittest.mock import patch, MagicMock
+from unittest.mock import MagicMock, patch
+
 from click.testing import CliRunner
-from ai_mastery.cli import cli
+
 from ai_mastery import scraper_web
+from ai_mastery.cli import cli
 
 
 def test_fetch_page_titles_success() -> None:
@@ -13,7 +15,8 @@ def test_fetch_page_titles_success() -> None:
         mock_page = MagicMock()
         mock_page.eval_on_selector_all.return_value = mock_titles
         mock_browser.new_page.return_value = mock_page
-        mock_playwright.return_value.__enter__.return_value.chromium.launch.return_value = mock_browser
+        playwright_context = mock_playwright.return_value.__enter__.return_value
+        playwright_context.chromium.launch.return_value = mock_browser
 
         titles = scraper_web.fetch_page_titles("http://fake.url")
         assert titles == mock_titles
