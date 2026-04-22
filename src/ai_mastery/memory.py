@@ -80,9 +80,14 @@ class MemoryManager:
             n_results=n_results,
             include=["documents", "metadatas", "distances"],
         )
-        documents = results.get("documents", [[]])[0] if results.get("documents") else []
-        metadatas = results.get("metadatas", [[]])[0] if results.get("metadatas") else []
-        distances = results.get("distances", [[]])[0] if results.get("distances") else []
+        documents_raw = results.get("documents")
+        metadatas_raw = results.get("metadatas")
+        distances_raw = results.get("distances")
+
+        documents = documents_raw[0] if documents_raw else []
+        metadatas = metadatas_raw[0] if metadatas_raw else []
+        distances = distances_raw[0] if distances_raw else []
+
         return [
             {"content": doc, "metadata": meta, "distance": dist}
             for doc, meta, dist in zip(documents, metadatas, distances)
