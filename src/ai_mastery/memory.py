@@ -1,5 +1,5 @@
 """Módulo de memoria vectorial con ChromaDB y Ollama."""
-from typing import Optional
+from typing import Any, Optional
 
 import chromadb
 from chromadb.config import Settings
@@ -13,7 +13,7 @@ class MemoryManager:
         collection_name: str = "ai_mastery_docs",
         persist_directory: str = "./chroma_db",
         embedding_model: str = "tinyllama",
-    ):
+    ) -> None:
         self.embedding_model = embedding_model
         self.client = chromadb.PersistentClient(
             path=persist_directory,
@@ -25,7 +25,7 @@ class MemoryManager:
         )
 
     def add_documents(
-        self, documents: list[str], metadatas: Optional[list[dict]] = None
+        self, documents: list[str], metadatas: Optional[list[dict[str, Any]]] = None
     ) -> int:
         """Añade una lista de documentos a la memoria vectorial.
 
@@ -56,13 +56,13 @@ class MemoryManager:
             return 0
         self.collection.add(
             documents=valid_docs,
-            embeddings=valid_embeddings,
+            embeddings=valid_embeddings,  # type: ignore[arg-type]
             ids=valid_ids,
-            metadatas=valid_metadatas if valid_metadatas else None,
+            metadatas=valid_metadatas if valid_metadatas else None,  # type: ignore[arg-type]
         )
         return len(valid_docs)
 
-    def query(self, query_text: str, n_results: int = 5) -> list[dict]:
+    def query(self, query_text: str, n_results: int = 5) -> list[dict[str, Any]]:
         """Busca los documentos más relevantes para una consulta.
 
         Args:
@@ -76,13 +76,13 @@ class MemoryManager:
         if query_embedding is None:
             return []
         results = self.collection.query(
-            query_embeddings=[query_embedding],
+            query_embeddings=[query_embedding],  # type: ignore[arg-type]
             n_results=n_results,
             include=["documents", "metadatas", "distances"],
         )
-        documents = results.get("documents", [[]])[0]
-        metadatas = results.get("metadatas", [[]])[0]
-        distances = results.get("distances", [[]])[0]
+        documents = results.get("documents", [[]])[0] if results.get("documents") else []
+        metadatas = results.get("metadatas", [[]])[0] if results.get("metadatas") else []
+        distances = results.get("distances", [[]])[0] if results.get("distances") else []
         return [
             {"content": doc, "metadata": meta, "distance": dist}
             for doc, meta, dist in zip(documents, metadatas, distances)
@@ -110,7 +110,7 @@ def search_memory(
     collection_name: str = "ai_mastery_docs",
     persist_directory: str = "./chroma_db",
     n_results: int = 5,
-) -> list[dict]:
+) -> list[dict[str, Any]]:
     """Función de conveniencia para buscar en la memoria."""
     manager = MemoryManager(collection_name, persist_directory)
     return manager.query(query, n_results)
