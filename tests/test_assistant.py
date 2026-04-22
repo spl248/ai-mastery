@@ -1,8 +1,10 @@
 """Tests para el módulo assistant."""
-from unittest.mock import patch, MagicMock
+from unittest.mock import MagicMock, patch
+
 from click.testing import CliRunner
-from ai_mastery.cli import cli
+
 from ai_mastery import assistant
+from ai_mastery.cli import cli
 
 
 def test_research_from_feed_success() -> None:
@@ -18,11 +20,15 @@ def test_research_from_feed_success() -> None:
     ]
 
     with patch("ai_mastery.assistant.scraper.fetch_feed", return_value=mock_articles):
-        with patch("ai_mastery.assistant.memory.MemoryManager", return_value=mock_mem_manager):
-            with patch("ai_mastery.assistant.agent.ask_agent", return_value="Informe generado") as mock_agent:
-                response = assistant.research_from_feed(
-                    "http://fake.feed", "¿IA?"
-                )
+        with patch(
+            "ai_mastery.assistant.memory.MemoryManager",
+            return_value=mock_mem_manager,
+        ):
+            with patch(
+                "ai_mastery.assistant.agent.ask_agent",
+                return_value="Informe generado",
+            ) as mock_agent:
+                response = assistant.research_from_feed("http://fake.feed", "¿IA?")
                 assert "Informe generado" in response
                 mock_agent.assert_called_once()
 
@@ -37,7 +43,9 @@ def test_research_from_feed_no_articles() -> None:
 def test_research_command() -> None:
     """Test que verifica el comando research."""
     runner = CliRunner()
-    with patch("ai_mastery.assistant.research_from_feed", return_value="Informe de prueba") as mock_func:
+    with patch(
+        "ai_mastery.assistant.research_from_feed", return_value="Informe de prueba"
+    ) as mock_func:
         result = runner.invoke(cli, ["research", "http://fake.feed", "pregunta"])
         assert result.exit_code == 0
         assert "Informe de prueba" in result.output

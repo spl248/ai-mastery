@@ -36,7 +36,12 @@ def research_from_feed(
     context = "\n\n".join([doc["content"] for doc in relevant_docs])
 
     # 4. Construir el prompt para el agente
-    prompt = f"""Eres un asistente de investigación experto. A continuación se te proporciona un contexto extraído de varios artículos de noticias. Tu tarea es responder a la pregunta del usuario basándote EXCLUSIVAMENTE en ese contexto. No utilices ninguna herramienta externa ni conocimientos previos. Si la información no está en el contexto, responde claramente que no se encuentra en los artículos analizados. Escribe la respuesta en formato Markdown, incluyendo referencias a los artículos cuando sea posible.
+    prompt = f"""Eres un asistente de investigación experto. A continuación se te proporciona un
+contexto extraído de varios artículos de noticias. Tu tarea es responder a la pregunta
+del usuario basándote EXCLUSIVAMENTE en ese contexto. No utilices ninguna herramienta
+externa ni conocimientos previos. Si la información no está en el contexto, responde
+claramente que no se encuentra en los artículos analizados. Escribe la respuesta en
+formato Markdown, incluyendo referencias a los artículos cuando sea posible.
 
 Contexto:
 {context}
