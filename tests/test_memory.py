@@ -59,10 +59,10 @@ def test_ingest_command() -> None:
     with runner.isolated_filesystem():
         with open("docs.txt", "w", encoding="utf-8") as f:
             f.write("Línea 1\nLínea 2\n")
-        with patch("ai_mastery.memory.MemoryManager") as MockManager:
+        with patch("ai_mastery.memory.MemoryManager") as mock_manager:
             mock_instance = MagicMock()
             mock_instance.add_documents.return_value = 2
-            MockManager.return_value = mock_instance
+            mock_manager.return_value = mock_instance
             result = runner.invoke(cli, ["ingest", "docs.txt"])
             assert result.exit_code == 0
             assert "2 documentos ingeridos" in result.output
@@ -75,10 +75,10 @@ def test_query_command() -> None:
         {"content": "Resultado 1", "distance": 0.1, "metadata": {}},
         {"content": "Resultado 2", "distance": 0.2, "metadata": {}},
     ]
-    with patch("ai_mastery.memory.MemoryManager") as MockManager:
+    with patch("ai_mastery.memory.MemoryManager") as mock_manager:
         mock_instance = MagicMock()
         mock_instance.query.return_value = mock_results
-        MockManager.return_value = mock_instance
+        mock_manager.return_value = mock_instance
         result = runner.invoke(cli, ["query", "pregunta"])
         assert result.exit_code == 0
         assert "Resultado 1" in result.output
