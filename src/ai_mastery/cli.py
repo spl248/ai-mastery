@@ -4,10 +4,8 @@ import os
 import click
 
 from ai_mastery import agent as agent_module
-from ai_mastery import memory, ollama_client, scraper
+from ai_mastery import assistant, memory, ollama_client, scraper, scraper_web
 from ai_mastery.utils import timer
-from ai_mastery import assistant
-from ai_mastery import scraper_web
 
 
 @click.group()

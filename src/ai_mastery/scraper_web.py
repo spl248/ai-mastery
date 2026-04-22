@@ -1,14 +1,15 @@
 """Módulo de automatización web con Playwright."""
-from playwright.sync_api import sync_playwright
 from typing import Optional
+
+from playwright.sync_api import sync_playwright
 
 
 def fetch_page_titles(url: str = "https://techcrunch.com/") -> Optional[list[str]]:
     """Extrae los títulos de los artículos de una página web.
-    
+
     Args:
         url: URL de la página a analizar.
-    
+
     Returns:
         Una lista de títulos o None si ocurre un error.
     """
