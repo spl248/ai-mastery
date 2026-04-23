@@ -8,7 +8,6 @@ from ai_mastery.cli import cli
 
 def test_fetch_page_titles_success() -> None:
     """Test que verifica que fetch_page_titles extrae títulos correctamente."""
-    # Importamos scraper_web dentro del test para evitar la carga en CI
     from ai_mastery import scraper_web
 
     mock_titles = ["Título 1", "Título 2", "Título 3"]
@@ -45,6 +44,7 @@ def test_web_scrape_command() -> None:
         assert "Noticia 1" in result.output
         assert "Noticia 2" in result.output
 
+
 def test_fetch_jobs_returns_jobs() -> None:
     """Test que verifica que fetch_jobs extrae ofertas correctamente."""
     from ai_mastery import scraper_web
@@ -52,21 +52,15 @@ def test_fetch_jobs_returns_jobs() -> None:
     with patch("ai_mastery.scraper_web.sync_playwright") as mock_playwright:
         mock_browser = MagicMock()
         mock_page = MagicMock()
-        # Crear una card mock que devuelva valores concretos
         mock_card = MagicMock()
-        # Mock para title_selector
         mock_title = MagicMock()
         mock_title.inner_text.return_value = "Dev Python"
-        # Mock para company_selector
         mock_company = MagicMock()
         mock_company.inner_text.return_value = "TechCorp"
-        # Mock para location_selector
         mock_location = MagicMock()
         mock_location.inner_text.return_value = "Madrid"
-        # Mock para link_selector
         mock_link = MagicMock()
         mock_link.get_attribute.return_value = "/job/1"
-        # Configurar query_selector para que devuelva el mock adecuado según el selector
         mock_card.query_selector.side_effect = lambda sel: {
             "td.company_and_position_mobile a h2": mock_title,
             "td.company_and_position_mobile a h3": mock_company,
@@ -88,8 +82,9 @@ def test_fetch_jobs_returns_jobs() -> None:
 
 def test_save_jobs_to_json_creates_file(tmp_path) -> None:
     """Test que verifica que save_jobs_to_json guarda correctamente en un archivo."""
-    from ai_mastery import scraper_web
     import json
+
+    from ai_mastery import scraper_web
 
     test_file = str(tmp_path / "test_jobs.json")
     jobs = [{"title": "Test Job", "company": "TestCo", "location": "Remoto", "link": "/test"}]
