@@ -289,5 +289,31 @@ def web_scrape(url: str) -> None:
         click.echo("❌ No se pudieron extraer títulos.")
 
 
+@cli.command()
+@click.option(
+    "--url",
+    default="https://remoteok.com/remote-python-jobs",
+    help="URL de la página de ofertas de empleo",
+)
+@click.option(
+    "--output",
+    default="jobs.json",
+    help="Archivo JSON de salida",
+)
+def scrape_jobs(url: str, output: str) -> None:
+    """Extrae ofertas de empleo de una web y las guarda en un archivo JSON."""
+    from ai_mastery import scraper_web  # Importación local
+
+    click.echo(f"🌐 Accediendo a: {url}")
+    click.echo("⏳ Extrayendo ofertas de empleo...\n")
+    jobs = scraper_web.fetch_jobs(url=url)
+    if jobs:
+        scraper_web.save_jobs_to_json(jobs, output)
+        click.echo(f"📰 Se encontraron {len(jobs)} ofertas.")
+        click.echo(f"💾 Guardadas en {output}")
+    else:
+        click.echo("❌ No se pudieron extraer ofertas.")
+
+
 if __name__ == "__main__":
     cli()

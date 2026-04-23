@@ -35,6 +35,7 @@ Mientras tanto, puedes ver el CLI en acción en este vídeo de 2 minutos: [Ver d
 | `ingest ARCHIVO` | Ingiere documentos desde un archivo de texto a la memoria vectorial | `python src/ai_mastery/cli.py ingest docs.txt` |
 | `query "PREGUNTA"` | Busca información relevante en la memoria vectorial | `python src/ai_mastery/cli.py query "vehículo veloz"` |
 | `research FEED "PREGUNTA"` | Investiga un feed RSS y genera un informe con IA | `python src/ai_mastery/cli.py research "URL" "¿Qué noticias hay sobre IA?"` |
+| `scrape-jobs` | Extrae ofertas de empleo de una web y las guarda en JSON | `python src/ai_mastery/cli.py scrape-jobs --url URL` |
 
 ## 🛠️ Utilidades
 
@@ -89,3 +90,5 @@ ai-mastery/
 - **Día 9:** Asistente de investigación autónomo (scraper + memoria + agente). Comando `research`.
 - **Día 10 (Viernes de Ajuste):** Publicación en LinkedIn anunciando el asistente de investigación.
   **Post LinkedIn:** [Ver publicación](https://www.linkedin.com/feed/update/urn:li:activity:7452752357458694144/)
+- **Día 11:** Automatización web con Playwright. Comando web-scrape para extraer títulos.
+- **Día 12:** Extracción de ofertas de empleo con Playwright. Comando `scrape-jobs` y exportación a JSON.
