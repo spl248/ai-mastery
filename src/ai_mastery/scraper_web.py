@@ -1,5 +1,5 @@
 """Módulo de automatización web con Playwright."""
-from typing import Optional
+from typing import Any, Optional
 
 from playwright.sync_api import sync_playwright
 
@@ -36,7 +36,7 @@ def fetch_jobs(
     title_selector: str = "td.company_and_position_mobile a h2",
     company_selector: str = "td.company_and_position_mobile a h3",
     location_selector: str = "td.company_and_position_mobile div.location",
-) -> list[dict]:
+) -> list[dict[str, Any]]:
     """Extrae ofertas de empleo de una página web y las devuelve como lista de diccionarios.
 
     Args:
@@ -76,7 +76,7 @@ def fetch_jobs(
         return []
 
 
-def save_jobs_to_json(jobs: list[dict], filename: str = "jobs.json") -> bool:
+def save_jobs_to_json(jobs: list[dict[str, Any]], filename: str = "jobs.json") -> bool:
     """Guarda una lista de ofertas de empleo en un archivo JSON.
 
     Args:
