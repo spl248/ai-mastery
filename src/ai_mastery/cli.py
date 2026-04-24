@@ -314,6 +314,28 @@ def scrape_jobs(url: str, output: str) -> None:
     else:
         click.echo("❌ No se pudieron extraer ofertas.")
 
+@cli.command()
+@click.option("--cv-file", required=True, help="Ruta al archivo de texto con el CV")
+@click.option("--keyword", required=True, help="Palabra clave para buscar ofertas")
+@click.option("--location", default="Madrid", help="Ubicación de las ofertas")
+def postular(cv_file: str, keyword: str, location: str) -> None:
+    """Simula una postulación a ofertas de empleo usando un equipo de agentes IA."""
+    from ai_mastery import crew_module  # Importación local
+
+    if not os.path.exists(cv_file):
+        click.echo(f"❌ Error: El archivo de CV '{cv_file}' no existe.")
+        return
+
+    with open(cv_file, "r", encoding="utf-8") as f:
+        cv_text = f.read()
+
+    click.echo(f"📋 Creando equipo de agentes para '{keyword}' en '{location}'...")
+    crew = crew_module.crear_equipo_postulacion(cv_text, keyword, location)
+    click.echo("🤖 Ejecutando agentes (esto puede tardar unos minutos)...\n")
+    result = crew.kickoff()
+    click.echo("📝 Resultado:\n")
+    click.echo(result)
+
 
 if __name__ == "__main__":
     cli()

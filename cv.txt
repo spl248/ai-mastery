@@ -1,0 +1,4 @@
+﻿Nombre: Samuel Pulido
+Experiencia: 3 años como desarrollador Python backend. He trabajado con Django, FastAPI y PostgreSQL.
+Habilidades: Python, SQL, APIs REST, Git, automatización de procesos.
+Idiomas: Español nativo, Inglés B2.

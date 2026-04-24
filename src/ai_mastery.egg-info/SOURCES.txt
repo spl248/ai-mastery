@@ -8,6 +8,7 @@ src/ai_mastery/cli.py
 src/ai_mastery/memory.py
 src/ai_mastery/ollama_client.py
 src/ai_mastery/scraper.py
+src/ai_mastery/scraper_web.py
 src/ai_mastery/utils.py
 src/ai_mastery.egg-info/PKG-INFO
 src/ai_mastery.egg-info/SOURCES.txt
@@ -20,3 +21,4 @@ tests/test_cli.py
 tests/test_memory.py
 tests/test_ollama_client.py
 tests/test_scraper.py
+tests/test_scraper_web.py
