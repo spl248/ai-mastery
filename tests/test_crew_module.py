@@ -1,14 +1,15 @@
 """Tests para el módulo crew_module."""
-from unittest.mock import patch, MagicMock
+from unittest.mock import MagicMock, patch
+
 from click.testing import CliRunner
-from ai_mastery.cli import cli
+
 from ai_mastery import crew_module
+from ai_mastery.cli import cli
 
 
 def test_crear_equipo_postulacion_returns_crew() -> None:
     """Test que verifica que crear_equipo_postulacion devuelve un objeto Crew."""
     cv = "Nombre: Test\nHabilidades: Python"
-    # Mockear la creación completa del Crew evitando validaciones internas de Pydantic
     with patch("ai_mastery.crew_module.Crew") as mock_crew_class:
         mock_crew_instance = MagicMock()
         mock_crew_class.return_value = mock_crew_instance
@@ -45,7 +46,10 @@ def test_postular_command_success() -> None:
             f.write("Nombre: Test\nPython: 3 años\n")
         mock_crew = MagicMock()
         mock_crew.kickoff.return_value = "Carta generada exitosamente"
-        with patch("ai_mastery.crew_module.crear_equipo_postulacion", return_value=mock_crew):
+        with patch(
+            "ai_mastery.crew_module.crear_equipo_postulacion",
+            return_value=mock_crew,
+        ):
             result = runner.invoke(cli, [
                 "postular",
                 "--cv-file", "cv.txt",
