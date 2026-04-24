@@ -21,7 +21,7 @@ def crear_equipo_postulacion(
     keyword: str,
     location: str = "Madrid",
     model: str = "mistral",
-):
+) -> Crew:
     """Crea un equipo CrewAI con tres agentes para postular a ofertas."""
     llm = LLM(
         model=f"ollama/{model}",
