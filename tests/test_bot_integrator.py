@@ -1,19 +1,22 @@
 """Tests para el módulo bot_integrator."""
-from unittest.mock import patch, MagicMock
+from unittest.mock import MagicMock, patch
+
 from click.testing import CliRunner
-from ai_mastery.cli import cli
+
 from ai_mastery import bot_integrator
+from ai_mastery.cli import cli
 
 
 def test_run_bot_returns_results() -> None:
     """Test que verifica que run_bot devuelve resultados con mocks."""
-    # Mockear fetch_jobs para que devuelva ofertas ficticias
     mock_jobs = [
         {"title": "Dev Python", "company": "TechCorp", "location": "Madrid", "link": "/job/1"},
         {"title": "Backend", "company": "DataInc", "location": "Barcelona", "link": "/job/2"},
     ]
     with patch("ai_mastery.bot_integrator.fetch_jobs", return_value=mock_jobs):
-        with patch("ai_mastery.bot_integrator.crew_module.crear_equipo_postulacion") as mock_crew_func:
+        with patch(
+            "ai_mastery.bot_integrator.crew_module.crear_equipo_postulacion"
+        ) as mock_crew_func:
             mock_crew = MagicMock()
             mock_crew.kickoff.return_value = "Carta simulada"
             mock_crew_func.return_value = mock_crew
@@ -39,12 +42,19 @@ def test_bot_command_success() -> None:
             f.write("Nombre: Test\nPython: 3 años\n")
         mock_results = [
             {
-                "job": {"title": "Dev", "company": "TechCo", "location": "Madrid", "link": "/job/1"},
+                "job": {
+                    "title": "Dev",
+                    "company": "TechCo",
+                    "location": "Madrid",
+                    "link": "/job/1",
+                },
                 "cover_letter": "Carta generada",
                 "timestamp": "2026-04-24T12:00:00",
             }
         ]
-        with patch("ai_mastery.bot_integrator.run_bot", return_value=mock_results):
+        with patch(
+            "ai_mastery.bot_integrator.run_bot", return_value=mock_results
+        ):
             result = runner.invoke(cli, [
                 "bot",
                 "--cv-file", "cv.txt",
