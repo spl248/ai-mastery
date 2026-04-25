@@ -11,11 +11,18 @@ log = logging.getLogger("bot_integrator")
 log.setLevel(logging.INFO)
 if not log.handlers:
     handler = logging.StreamHandler()
-    handler.setFormatter(logging.Formatter("[%(asctime)s] %(message)s", datefmt="%H:%M:%S"))
+    handler.setFormatter(
+        logging.Formatter("[%(asctime)s] %(message)s", datefmt="%H:%M:%S")
+    )
     log.addHandler(handler)
 
 
-def run_bot(cv_path: str, keyword: str, location: str = "Madrid", model: str = "mistral") -> list[dict[str, Any]]:
+def run_bot(
+    cv_path: str,
+    keyword: str,
+    location: str = "Madrid",
+    model: str = "mistral",
+) -> list[dict[str, Any]]:
     """Ejecuta el bot completo en modo simulación y devuelve los resultados con logs.
 
     Args:
@@ -27,7 +34,11 @@ def run_bot(cv_path: str, keyword: str, location: str = "Madrid", model: str = "
     Returns:
         Lista de diccionarios con 'job', 'cover_letter' y 'logs'.
     """
-    log.info(f"🤖 Iniciando bot de postulación. CV: {cv_path}, keyword: {keyword}, location: {location}")
+    log_msg = (
+        f"🤖 Iniciando bot de postulación. "
+        f"CV: {cv_path}, keyword: {keyword}, location: {location}"
+    )
+    log.info(log_msg)
 
     # 1. Leer el CV
     log.info("📄 Leyendo el CV...")
@@ -41,7 +52,6 @@ def run_bot(cv_path: str, keyword: str, location: str = "Madrid", model: str = "
 
     # 2. Extraer ofertas
     log.info(f"🌐 Buscando ofertas para '{keyword}' en '{location}'...")
-    # Construir la URL de búsqueda (mismo formato que en crew_module.py)
     url = f"https://remoteok.com/remote-{keyword.replace(' ', '-')}-jobs"
     jobs = fetch_jobs(url=url)
     if not jobs:
@@ -51,20 +61,26 @@ def run_bot(cv_path: str, keyword: str, location: str = "Madrid", model: str = "
 
     # 3. Generar cartas para cada oferta con el equipo CrewAI
     results = []
-    for i, job in enumerate(jobs[:3], 1):  # Limitamos a 3 para no saturar
-        log.info(f"✍️ Generando carta para oferta {i}/{min(3, len(jobs))}: {job.get('title', 'N/A')} en {job.get('company', 'N/A')}")
+    for i, job in enumerate(jobs[:3], 1):
+        title = job.get("title", "N/A")
+        company = job.get("company", "N/A")
+        log.info(
+            f"✍️ Generando carta para oferta {i}/{min(3, len(jobs))}: "
+            f"{title} en {company}"
+        )
         try:
-            # Crear un equipo específico para esta oferta
-            crew = crew_module.crear_equipo_postulacion(cv_text, keyword, location, model)
+            crew = crew_module.crear_equipo_postulacion(
+                cv_text, keyword, location, model
+            )
             carta = str(crew.kickoff())
             results.append({
                 "job": job,
                 "cover_letter": carta,
                 "timestamp": datetime.now().isoformat(),
             })
-            log.info(f"✅ Carta generada para {job.get('company', 'N/A')}.")
+            log.info(f"✅ Carta generada para {company}.")
         except Exception as e:
-            log.error(f"❌ Error generando carta para {job.get('company', 'N/A')}: {e}")
+            log.error(f"❌ Error generando carta para {company}: {e}")
             results.append({
                 "job": job,
                 "cover_letter": f"Error: {e}",
