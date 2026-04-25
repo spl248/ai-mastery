@@ -37,6 +37,7 @@ Mientras tanto, puedes ver el CLI en acción en este vídeo de 2 minutos: [Ver d
 | `research FEED "PREGUNTA"` | Investiga un feed RSS y genera un informe con IA | `python src/ai_mastery/cli.py research "URL" "¿Qué noticias hay sobre IA?"` |
 | `scrape-jobs` | Extrae ofertas de empleo de una web y las guarda en JSON | `python src/ai_mastery/cli.py scrape-jobs --url URL` |
 | `postular` | Simula una postulación a ofertas de empleo con un equipo de agentes IA | `python src/ai_mastery/cli.py postular --cv-file cv.txt --keyword "python"` |
+| `bot` | Ejecuta el bot completo de postulación en modo simulación con logs | `python src/ai_mastery/cli.py bot --cv-file cv.txt --keyword "python"` |
 
 ## 🛠️ Utilidades
 
@@ -94,3 +95,4 @@ ai-mastery/
 - **Día 11:** Automatización web con Playwright. Comando web-scrape para extraer títulos.
 - **Día 12:** Extracción de ofertas de empleo con Playwright. Comando `scrape-jobs` y exportación a JSON.
 - **Día 13:** Equipo de agentes con CrewAI (buscador, analista CV, redactor). Comando `postular`.
+- **Día 14:** Integración del bot completo con logs y modo simulación. Comando `bot`.

@@ -336,6 +336,30 @@ def postular(cv_file: str, keyword: str, location: str) -> None:
     click.echo("📝 Resultado:\n")
     click.echo(result)
 
+@cli.command()
+@click.option("--cv-file", required=True, help="Ruta al archivo de texto con el CV")
+@click.option("--keyword", required=True, help="Palabra clave para buscar ofertas")
+@click.option("--location", default="Madrid", help="Ubicación de las ofertas")
+def bot(cv_file: str, keyword: str, location: str) -> None:
+    """Ejecuta el bot completo de postulación en modo simulación con logs."""
+    from ai_mastery import bot_integrator  # Importación local
+
+    if not os.path.exists(cv_file):
+        click.echo(f"❌ Error: El archivo de CV '{cv_file}' no existe.")
+        return
+
+    click.echo(f"🤖 Iniciando bot de postulación para '{keyword}' en '{location}'...")
+    click.echo("📋 Modo simulación: no se enviarán postulaciones reales.\n")
+    results = bot_integrator.run_bot(cv_file, keyword, location)
+    if results:
+        click.echo(f"\n🏁 Bot finalizado. {len(results)} cartas generadas:")
+        for i, res in enumerate(results, 1):
+            click.echo(f"\n📩 Postulación {i}: {res['job'].get('title', 'N/A')} en {res['job'].get('company', 'N/A')}")
+            click.echo(f"   Timestamp: {res['timestamp']}")
+            click.echo(f"   Carta (primeros 200 caracteres): {res['cover_letter'][:200]}...")
+    else:
+        click.echo("⚠️ No se generaron cartas. Revisa el CV o la disponibilidad de ofertas.")
+
 
 if __name__ == "__main__":
     cli()
