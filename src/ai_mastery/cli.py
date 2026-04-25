@@ -314,6 +314,7 @@ def scrape_jobs(url: str, output: str) -> None:
     else:
         click.echo("❌ No se pudieron extraer ofertas.")
 
+
 @cli.command()
 @click.option("--cv-file", required=True, help="Ruta al archivo de texto con el CV")
 @click.option("--keyword", required=True, help="Palabra clave para buscar ofertas")
@@ -336,6 +337,7 @@ def postular(cv_file: str, keyword: str, location: str) -> None:
     click.echo("📝 Resultado:\n")
     click.echo(result)
 
+
 @cli.command()
 @click.option("--cv-file", required=True, help="Ruta al archivo de texto con el CV")
 @click.option("--keyword", required=True, help="Palabra clave para buscar ofertas")
@@ -354,9 +356,13 @@ def bot(cv_file: str, keyword: str, location: str) -> None:
     if results:
         click.echo(f"\n🏁 Bot finalizado. {len(results)} cartas generadas:")
         for i, res in enumerate(results, 1):
-            click.echo(f"\n📩 Postulación {i}: {res['job'].get('title', 'N/A')} en {res['job'].get('company', 'N/A')}")
+            click.echo(
+                f"\n📩 Postulación {i}: "
+                f"{res['job'].get('title', 'N/A')} en "
+                f"{res['job'].get('company', 'N/A')}"
+            )
             click.echo(f"   Timestamp: {res['timestamp']}")
-            click.echo(f"   Carta (primeros 200 caracteres): {res['cover_letter'][:200]}...")
+            click.echo(f"   Carta (primeros 200 caracteres): {str(res['cover_letter'])[:200]}...")
     else:
         click.echo("⚠️ No se generaron cartas. Revisa el CV o la disponibilidad de ofertas.")
 
