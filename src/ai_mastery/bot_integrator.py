@@ -1,65 +1,91 @@
-"""Tests para el módulo bot_integrator."""
-from unittest.mock import MagicMock, patch
+"""Módulo integrador del bot de postulación con logs detallados."""
+import logging
+from datetime import datetime
+from typing import Any
 
-from click.testing import CliRunner
+from ai_mastery import crew_module
+from ai_mastery.scraper_web import fetch_jobs
 
-from ai_mastery import bot_integrator
-from ai_mastery.cli import cli
-
-
-def test_run_bot_returns_results() -> None:
-    """Test que verifica que run_bot devuelve resultados con mocks."""
-    mock_jobs = [
-        {"title": "Dev Python", "company": "TechCorp", "location": "Madrid", "link": "/job/1"},
-        {"title": "Backend", "company": "DataInc", "location": "Barcelona", "link": "/job/2"},
-    ]
-    with patch("ai_mastery.bot_integrator.fetch_jobs", return_value=mock_jobs):
-        with patch(
-            "ai_mastery.bot_integrator.crew_module.crear_equipo_postulacion"
-        ) as mock_crew_func:
-            mock_crew = MagicMock()
-            mock_crew.kickoff.return_value = "Carta simulada"
-            mock_crew_func.return_value = mock_crew
-            results = bot_integrator.run_bot("cv.txt", "python", "Madrid")
-            assert len(results) == 2
-            assert results[0]["cover_letter"] == "Carta simulada"
-            assert results[0]["job"]["title"] == "Dev Python"
+# Configurar el logger
+log = logging.getLogger("bot_integrator")
+log.setLevel(logging.INFO)
+if not log.handlers:
+    handler = logging.StreamHandler()
+    handler.setFormatter(
+        logging.Formatter("[%(asctime)s] %(message)s", datefmt="%H:%M:%S")
+    )
+    log.addHandler(handler)
 
 
-def test_run_bot_no_cv_file() -> None:
-    """Test que verifica que run_bot devuelve [] si el CV no existe."""
-    with patch("ai_mastery.bot_integrator.fetch_jobs") as mock_fetch:
-        results = bot_integrator.run_bot("no_existe.txt", "python", "Madrid")
-        assert results == []
-        mock_fetch.assert_not_called()
+def run_bot(
+    cv_path: str,
+    keyword: str,
+    location: str = "Madrid",
+    model: str = "mistral",
+) -> list[dict[str, Any]]:
+    """Ejecuta el bot completo en modo simulación y devuelve los resultados con logs.
 
+    Args:
+        cv_path: Ruta al archivo de texto con el CV.
+        keyword: Palabra clave para buscar ofertas.
+        location: Ubicación de las ofertas.
+        model: Modelo de Ollama a usar.
 
-def test_bot_command_success() -> None:
-    """Test que verifica el comando bot con mocks."""
-    runner = CliRunner()
-    with runner.isolated_filesystem():
-        with open("cv.txt", "w", encoding="utf-8") as f:
-            f.write("Nombre: Test\nPython: 3 años\n")
-        mock_results = [
-            {
-                "job": {
-                    "title": "Dev",
-                    "company": "TechCo",
-                    "location": "Madrid",
-                    "link": "/job/1",
-                },
-                "cover_letter": "Carta generada",
-                "timestamp": "2026-04-24T12:00:00",
-            }
-        ]
-        with patch(
-            "ai_mastery.bot_integrator.run_bot", return_value=mock_results
-        ):
-            result = runner.invoke(cli, [
-                "bot",
-                "--cv-file", "cv.txt",
-                "--keyword", "python",
-                "--location", "Barcelona",
-            ])
-            assert result.exit_code == 0
-            assert "Carta generada" in result.output
+    Returns:
+        Lista de diccionarios con 'job', 'cover_letter' y 'logs'.
+    """
+    log_msg = (
+        f"🤖 Iniciando bot de postulación. "
+        f"CV: {cv_path}, keyword: {keyword}, location: {location}"
+    )
+    log.info(log_msg)
+
+    # 1. Leer el CV
+    log.info("📄 Leyendo el CV...")
+    try:
+        with open(cv_path, "r", encoding="utf-8") as f:
+            cv_text = f.read()
+        log.info(f"✅ CV leído correctamente ({len(cv_text)} caracteres).")
+    except FileNotFoundError:
+        log.error(f"❌ No se encontró el archivo de CV: {cv_path}")
+        return []
+
+    # 2. Extraer ofertas
+    log.info(f"🌐 Buscando ofertas para '{keyword}' en '{location}'...")
+    url = f"https://remoteok.com/remote-{keyword.replace(' ', '-')}-jobs"
+    jobs = fetch_jobs(url=url)
+    if not jobs:
+        log.warning("⚠️ No se encontraron ofertas.")
+        return []
+    log.info(f"✅ {len(jobs)} ofertas encontradas.")
+
+    # 3. Generar cartas para cada oferta con el equipo CrewAI
+    results = []
+    for i, job in enumerate(jobs[:3], 1):
+        title = job.get("title", "N/A")
+        company = job.get("company", "N/A")
+        log.info(
+            f"✍️ Generando carta para oferta {i}/{min(3, len(jobs))}: "
+            f"{title} en {company}"
+        )
+        try:
+            crew = crew_module.crear_equipo_postulacion(
+                cv_text, keyword, location, model
+            )
+            carta = str(crew.kickoff())
+            results.append({
+                "job": job,
+                "cover_letter": carta,
+                "timestamp": datetime.now().isoformat(),
+            })
+            log.info(f"✅ Carta generada para {company}.")
+        except Exception as e:
+            log.error(f"❌ Error generando carta para {company}: {e}")
+            results.append({
+                "job": job,
+                "cover_letter": f"Error: {e}",
+                "timestamp": datetime.now().isoformat(),
+            })
+
+    log.info(f"🏁 Bot finalizado. {len(results)} cartas generadas.")
+    return results
