@@ -38,3 +38,18 @@ jobs:
 
     - name: Test with pytest
       run: pytest tests/
+
+  docker:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Log in to Docker Hub
+      run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+
+    - name: Build Docker image
+      run: docker build -t samuel199711/ai-mastery-bot:latest .
+
+    - name: Push to Docker Hub
+      run: docker push samuel199711/ai-mastery-bot:latest
