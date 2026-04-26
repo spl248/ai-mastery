@@ -86,7 +86,14 @@ ai-mastery/
 │   ├── test_scraper_web.py
 │   ├── test_crew_module.py
 │   └── test_bot_integrator.py
+├── flows/
+│   └── bot_flow.py
 ├── scripts/demo.py
+├── Dockerfile
+├── app.py
+├── jobs_demo.json
+├── requirements_hf.txt
+├── prefect.yaml
 ├── pyproject.toml
 ├── README.md
 └── LESSONS.md
@@ -111,10 +118,15 @@ ai-mastery/
 - **Día 12:** Extracción de ofertas de empleo con Playwright. Comando `scrape-jobs` y exportación a JSON.
 - **Día 13:** Equipo de agentes con CrewAI (buscador, analista CV, redactor). Comando `postular`.
 - **Día 14:** Integración del bot completo con logs y modo simulación. Comando `bot`. ✅ research genera research_report.md; ✅ postular acepta PDF.
-- **Día 15:** Dashboard Streamlit desplegado en Hugging Face Spaces.  
-  🖥️ [Dashboard en vivo](https://huggingface.co/spaces/Samuel11111997/ai-mastery-bot-dashboard) 
+- **Día 15:** Dashboard Streamlit desplegado en Hugging Face Spaces.   
+🖥️ [Dashboard en vivo](https://huggingface.co/spaces/Samuel11111997/ai-mastery-bot-dashboard) 
 - **Día 16 (Viernes de Ajuste):** Vídeo demo del bot en YouTube y artículo final en Medium.  
-  🎬 [Vídeo demo](https://youtu.be/xAT-WcJt7fk)  
-  ✍️ [Artículo final](https://medium.com/@spulido248/automatic%C3%A9-mi-b%C3%BAsqueda-de-empleo-un-bot-multi-agente-que-postula-por-m%C3%AD-391afce28cbb)
-  🖥️ **Dashboard en vivo:** [Bot de Postulación – Hugging Face Spaces](https://huggingface.co/spaces/Samuel11111997/ai-mastery-bot-dashboard)
-  🎬 **Vídeo demo del bot:** [Ver en YouTube](https://youtu.be/xAT-WcJt7fk)
+ 🎬 [Vídeo demo](https://youtu.be/xAT-WcJt7fk)  
+ ✍️ [Artículo final](https://medium.com/@spulido248/automatic%C3%A9-mi-b%C3%BAsqueda-de-empleo-un-bot-multi-agente-que-postula-por-m%C3%AD-391afce28cbb)
+- **Día 17:** Dockerfile multi‑stage y pipeline CI/CD que construye y sube la imagen a Docker Hub.  
+  🐳 [Imagen en Docker Hub](https://hub.docker.com/r/samuel199711/ai-mastery-bot)
+- **Día 18:** Orquestación con Prefect Cloud – flujo diario programado.  
+  ⚡ [Prefect Cloud](https://app.prefect.cloud)
+
+**Próximo día:** Día 19 – Escalado (PostgreSQL + Redis).
+
