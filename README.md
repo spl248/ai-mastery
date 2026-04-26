@@ -19,6 +19,7 @@ pip install -e .[dev]
 ## 🎬 Demo en Vivo
 
 Mientras tanto, puedes ver el CLI en acción en este vídeo de 2 minutos: [Ver demo en YouTube](https://youtu.be/Zr2nZ2Q-USs)
+🖥️ **Dashboard en vivo:** [Bot de Postulación – Hugging Face Spaces](https://huggingface.co/spaces/Samuel11111997/ai-mastery-bot-dashboard)
 
 ## 🛠️ Comandos CLI
 
@@ -31,12 +32,14 @@ Mientras tanto, puedes ver el CLI en acción en este vídeo de 2 minutos: [Ver d
 | `scrape` | Descarga artículos de un feed RSS y los guarda en SQLite | `python src/ai_mastery/cli.py scrape --feed URL` |
 | `search PALABRA` | Busca noticias en la base de datos por palabra clave | `python src/ai_mastery/cli.py search Microsoft` |
 | `ask "PREGUNTA"` | Envía una pregunta al modelo de IA local (Ollama) | `python src/ai_mastery/cli.py ask "¿Qué es Ollama?"` |
+| `embed "TEXTO"` | Obtiene embedding vectorial con Ollama | `python src/ai_mastery/cli.py embed "texto"` |
+| `web-scrape` | Extrae títulos de una página web con Playwright | `python src/ai_mastery/cli.py web-scrape --url URL` |
 | `agent "PREGUNTA"` | Envía una pregunta al agente inteligente (LangChain + Ollama) | `python src/ai_mastery/cli.py agent "¿Cuánto es 15 * 23?"` |
 | `ingest ARCHIVO` | Ingiere documentos desde un archivo de texto a la memoria vectorial | `python src/ai_mastery/cli.py ingest docs.txt` |
 | `query "PREGUNTA"` | Busca información relevante en la memoria vectorial | `python src/ai_mastery/cli.py query "vehículo veloz"` |
 | `research FEED "PREGUNTA"` | Investiga un feed RSS y genera un informe con IA | `python src/ai_mastery/cli.py research "URL" "¿Qué noticias hay sobre IA?"` |
 | `scrape-jobs` | Extrae ofertas de empleo de una web y las guarda en JSON | `python src/ai_mastery/cli.py scrape-jobs --url URL` |
-| `postular` | Simula una postulación a ofertas de empleo con un equipo de agentes IA | `python src/ai_mastery/cli.py postular --cv-file cv.txt --keyword "python"` |
+| `postular` | Simula postulación con equipo de agentes (CV en .txt o .pdf) | `python src/ai_mastery/cli.py postular --cv-file cv.pdf --keyword "python"` | 
 | `bot` | Ejecuta el bot completo de postulación en modo simulación con logs | `python src/ai_mastery/cli.py bot --cv-file cv.txt --keyword "python"` |
 
 ## 🛠️ Utilidades
@@ -48,6 +51,7 @@ El módulo `ai_mastery.utils` y `ai_mastery.ollama_client` proporcionan herramie
 | `@timer` | Decorador que mide e imprime el tiempo de ejecución de una función. |
 | `read_large_file(path)` | Generador que lee archivos línea por línea sin cargarlos completamente en memoria. |
 | `ollama_client.generate(prompt)` | Cliente Python para generar texto con modelos locales de Ollama. |
+| `ollama_client.embed(text)` | Cliente de embeddings con Ollama |
 
 ## 🧪 Tests
 
@@ -61,17 +65,28 @@ pytest
 ai-mastery/
 ├── .github/workflows/ci.yml
 ├── src/ai_mastery/
-│ ├── __init__.py
-│ ├── cli.py
-│ ├── utils.py
-│ ├── scraper.py
-│ └── ollama_client.py
+│   ├── __init__.py
+│   ├── cli.py
+│   ├── utils.py
+│   ├── scraper.py
+│   ├── ollama_client.py
+│   ├── agent.py
+│   ├── memory.py
+│   ├── assistant.py
+│   ├── scraper_web.py
+│   ├── crew_module.py
+│   └── bot_integrator.py
 ├── tests/
-│ ├── test_cli.py
-│ ├── test_scraper.py
-│ └── test_ollama_client.py
-├── scripts/
-│ └── demo.py
+│   ├── test_cli.py
+│   ├── test_scraper.py
+│   ├── test_ollama_client.py
+│   ├── test_agent.py
+│   ├── test_memory.py
+│   ├── test_assistant.py
+│   ├── test_scraper_web.py
+│   ├── test_crew_module.py
+│   └── test_bot_integrator.py
+├── scripts/demo.py
 ├── pyproject.toml
 ├── README.md
 └── LESSONS.md
@@ -95,4 +110,11 @@ ai-mastery/
 - **Día 11:** Automatización web con Playwright. Comando web-scrape para extraer títulos.
 - **Día 12:** Extracción de ofertas de empleo con Playwright. Comando `scrape-jobs` y exportación a JSON.
 - **Día 13:** Equipo de agentes con CrewAI (buscador, analista CV, redactor). Comando `postular`.
-- **Día 14:** Integración del bot completo con logs y modo simulación. Comando `bot`.
+- **Día 14:** Integración del bot completo con logs y modo simulación. Comando `bot`. ✅ research genera research_report.md; ✅ postular acepta PDF.
+- **Día 15:** Dashboard Streamlit desplegado en Hugging Face Spaces.  
+  🖥️ [Dashboard en vivo](https://huggingface.co/spaces/Samuel11111997/ai-mastery-bot-dashboard) 
+- **Día 16 (Viernes de Ajuste):** Vídeo demo del bot en YouTube y artículo final en Medium.  
+  🎬 [Vídeo demo](https://youtu.be/xAT-WcJt7fk)  
+  ✍️ [Artículo final](https://medium.com/@spulido248/automatic%C3%A9-mi-b%C3%BAsqueda-de-empleo-un-bot-multi-agente-que-postula-por-m%C3%AD-391afce28cbb)
+  🖥️ **Dashboard en vivo:** [Bot de Postulación – Hugging Face Spaces](https://huggingface.co/spaces/Samuel11111997/ai-mastery-bot-dashboard)
+  🎬 **Vídeo demo del bot:** [Ver en YouTube](https://youtu.be/xAT-WcJt7fk)
