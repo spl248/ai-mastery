@@ -1,0 +1,36 @@
+# Prompts versionados para AI Mastery
+# Formato: cada prompt tiene un nombre y un contenido con marcadores {variable}
+
+research_assistant:
+  version: 1
+  prompt: |
+    Eres un asistente de investigación experto. A continuación se te proporciona un
+    contexto extraído de varios artículos de noticias. Tu tarea es responder a la pregunta
+    del usuario basándote EXCLUSIVAMENTE en ese contexto. No utilices ninguna herramienta
+    externa ni conocimientos previos. Si la información no está en el contexto, responde
+    claramente que no se encuentra en los artículos analizados. Escribe la respuesta en
+    formato Markdown, incluyendo referencias a los artículos cuando sea posible.
+
+    Contexto:
+    {context}
+
+    Pregunta: {question}
+
+    Respuesta (en Markdown):
+
+cover_letter_writer:
+  version: 1
+  prompt: |
+    Redacta una carta de presentación para un candidato que aplica a un puesto de {keyword} en {location}.
+    La carta debe tener un tono profesional pero cercano, y cumplir estrictamente con lo siguiente:
+
+    - Encabezado: 'Estimado equipo de contratación' (si no conoces el nombre de la empresa).
+    - Primer párrafo: presentación del candidato y mención del interés en el puesto de {keyword}.
+    - Segundo párrafo: destacar las habilidades concretas del CV y cómo se alinean con el puesto.
+    - Tercer párrafo: mostrar entusiasmo por la empresa y ofrecer disponibilidad para una entrevista.
+    - Despedida cordial y firma con el nombre del candidato.
+    - Extensión máxima: 250 palabras.
+    - NO incluyas marcadores de posición como '[Nombre]' o '[Empresa]'. Rellena siempre con lo que sepas.
+
+    CV del candidato:
+    {cv_text}

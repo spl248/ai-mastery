@@ -35,21 +35,21 @@ def research_from_feed(
     relevant_docs = mem_manager.query(question, n_results=5)
     context = "\n\n".join([doc["content"] for doc in relevant_docs])
 
-    # 4. Construir el prompt para el agente
-    prompt = f"""Eres un asistente de investigación experto. A continuación se te proporciona un
-contexto extraído de varios artículos de noticias. Tu tarea es responder a la pregunta
-del usuario basándote EXCLUSIVAMENTE en ese contexto. No utilices ninguna herramienta
-externa ni conocimientos previos. Si la información no está en el contexto, responde
-claramente que no se encuentra en los artículos analizados. Escribe la respuesta en
-formato Markdown, incluyendo referencias a los artículos cuando sea posible.
-
-Contexto:
-{context}
-
-Pregunta: {question}
-
-Respuesta (en Markdown):"""
+    # 4. Construir el prompt para el agente usando el template YAML
+    from ai_mastery.prompt_loader import get_prompt
+    prompt_template = get_prompt("research_assistant")
+    prompt = prompt_template.format(context=context, question=question)
 
     # 5. Obtener respuesta del agente
     response = agent.ask_agent(prompt, model=model)
+
+    # ✅ NUEVO: Guardar informe en archivo Markdown
+    report_path = "research_report.md"
+    with open(report_path, "w", encoding="utf-8") as f:
+        f.write("# Informe de investigación\n\n")
+        f.write(f"**Feed:** {feed_url}\n\n")
+        f.write(f"**Pregunta:** {question}\n\n")
+        f.write("---\n\n")
+        f.write(response)
+
     return response
