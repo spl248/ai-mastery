@@ -1,6 +1,6 @@
 """Módulo de gestión de base de datos PostgreSQL y caché Redis."""
-import os
 import json
+import os
 from typing import Any
 
 import psycopg2
@@ -11,8 +11,9 @@ from dotenv import load_dotenv
 # Cargar variables de entorno desde .env
 load_dotenv()
 
+
 # --- Conexiones ---
-def get_postgres_connection():
+def get_postgres_connection() -> psycopg2.extensions.connection:
     """Devuelve una conexión a PostgreSQL usando la URL completa."""
     database_url = os.getenv("DATABASE_URL")
     if not database_url:
@@ -20,7 +21,7 @@ def get_postgres_connection():
     return psycopg2.connect(database_url)
 
 
-def get_redis_client():
+def get_redis_client() -> redis.Redis:
     """Devuelve un cliente de Redis configurado desde variables de entorno."""
     redis_url = os.getenv("REDIS_URL")
     if not redis_url:
@@ -105,7 +106,9 @@ def search_articles(keyword: str) -> list[dict[str, Any]]:
 
 
 # --- Caché con Redis ---
-def cache_articles(feed_url: str, articles: list[dict[str, Any]], ttl: int = 3600) -> None:
+def cache_articles(
+    feed_url: str, articles: list[dict[str, Any]], ttl: int = 3600
+) -> None:
     """Guarda los artículos en Redis como JSON con un TTL (segundos)."""
     r = get_redis_client()
     key = f"feed:{feed_url}"
@@ -117,6 +120,14 @@ def get_cached_articles(feed_url: str) -> list[dict[str, Any]] | None:
     r = get_redis_client()
     key = f"feed:{feed_url}"
     data = r.get(key)
-    if data:
-        return json.loads(data)
+    if data is not None:
+        # Redis puede devolver bytes o str; aseguramos que sea str para json.loads
+        if isinstance(data, bytes):
+            data_str = data.decode()
+        else:
+            data_str = str(data)
+        result: Any = json.loads(data_str)
+        if isinstance(result, list):
+            return result
+        return None
     return None

@@ -3,7 +3,7 @@
 **Proyecto:** ai-mastery  
 **Repositorio:** https://github.com/spl248/ai-mastery  
 **Objetivo global:** Plan Definitivo v4.1 – De cero a mejor ingeniero IA + agencia.  
-**Estado actual:** Mes 4 en curso. Día 18 completado (Prefect Cloud). Próximo paso: PostgreSQL y Redis.
+**Estado actual:** Mes 4 en curso. Días 17‑19 completados (Docker Hub, Prefect Cloud, PostgreSQL + Redis). Próximo paso: versionado de prompts.
 
 ## 🧠 Quién eres y cómo trabajas
 - Eres Samuel, trabajas en paralelo con un empleo financiador (mañanas y fines de semana).
@@ -15,7 +15,7 @@
 - GitHub Actions (CI/CD verde), Docker (multi‑stage), Playwright, Ollama (mistral, tinyllama), ChromaDB, LangChain, CrewAI, Streamlit, Prefect
 - PyPDF2, feedparser, fpdf2
 
-## 📂 Estructura del proyecto (Día 18)
+## 📂 Estructura del proyecto (Día 19)
 ai-mastery/
 ├── src/ai_mastery/ (cli, utils, scraper, ollama_client, agent, memory, assistant, scraper_web, crew_module, bot_integrator)
 ├── tests/ (tests para cada módulo)
@@ -46,11 +46,11 @@ ai-mastery/
 - Dashboard Streamlit desplegado en HF Spaces
 - Artículo final en Medium + vídeo demo en YouTube
 
-### Mes 4 (3/5 – avance)
+- ### Mes 4 (4/5 – avance)
 - ✅ Dockerfile multi‑stage funcional y subido a Docker Hub
 - ✅ Pipeline CI/CD que construye y sube la imagen a Docker Hub
 - ✅ Flujo en Prefect Cloud desplegado y programado diariamente (06:00 UTC)
-- 🔲 Migración a PostgreSQL y Redis
+- ✅ Migración a PostgreSQL (Supabase) y Redis para caché
 - 🔲 Sistema de versionado de prompts (YAML)
 - 🔲 Viernes de Ajuste (análisis de logs, Case Study)
 
@@ -61,15 +61,16 @@ ai-mastery/
 - LinkedIn: https://www.linkedin.com/in/samuel-pulido-917172384/
 - 🐳 Imagen Docker Hub: https://hub.docker.com/r/samuel199711/ai-mastery-bot
 - ⚡ Prefect Cloud: https://app.prefect.cloud
+- 🗄️ Supabase: [Dashboard](https://supabase.com/dashboard/project/syrbdpvgwbbjbjxektcg)
 
 ## 🔜 Próximo paso inmediato
-**Día 19:** Escalado – migración a PostgreSQL y Redis.
+**Día 20:** Sistema de versionado de prompts (YAML).
 
 ## 🧪 Estado técnico
 - **Tests pasando:** 41
-- **Último commit:** [pendiente del push final del Día 18]
+- **Último commit:** 
 - **CI/CD:** ✅ Verde
-- **Archivos importantes recientes:** `Dockerfile`, `.github/workflows/ci.yml` (job docker), `flows/bot_flow.py`, `prefect.yaml`, `crew_module.py`, `bot_integrator.py`, `app.py`.
+- **Archivos importantes recientes:** `Dockerfile`, `.github/workflows/ci.yml` (job docker), `flows/bot_flow.py`, `prefect.yaml`, `crew_module.py`, `bot_integrator.py`, `app.py`, `db_manager.py`.
 
 ## 📌 Notas clave para continuar
 - Para mantener el contexto en nuevos chats, pegar siempre SESSION_CONTEXT.md al inicio, seguido del Plan de Seguimiento y el README.md si es necesario.

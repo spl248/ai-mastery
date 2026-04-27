@@ -1,9 +1,13 @@
 """Módulo de scraping de noticias con caché Redis y PostgreSQL."""
-import feedparser
 from typing import Any
+
+import feedparser
+
 from ai_mastery.db_manager import (
     cache_articles,
     get_cached_articles,
+)
+from ai_mastery.db_manager import (
     save_articles as save_articles_pg,
 )
 

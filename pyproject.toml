@@ -25,10 +25,13 @@ dev = [
     "pytest>=8.0.0",
     "ruff>=0.3.0",
     "mypy>=1.8.0",
+    "psycopg2-binary",
+    "redis",
+    "python-dotenv",
 ]
 
 [tool.ruff]
-line-length = 100
+line-length = 130
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "N", "W"]
