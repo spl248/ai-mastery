@@ -68,7 +68,7 @@ ai-mastery/
 
 ## 🧪 Estado técnico
 - **Tests pasando:** 41
-- **Último commit:** 
+- **Último commit:** dff984a (Migración a PostgreSQL y Redis, actualización de scraper y CLI (Día 19))
 - **CI/CD:** ✅ Verde
 - **Archivos importantes recientes:** `Dockerfile`, `.github/workflows/ci.yml` (job docker), `flows/bot_flow.py`, `prefect.yaml`, `crew_module.py`, `bot_integrator.py`, `app.py`, `db_manager.py`.
 
