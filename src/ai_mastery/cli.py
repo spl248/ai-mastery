@@ -84,44 +84,34 @@ def run(script: str | None = None) -> None:
 @click.option(
     "--feed", default="https://techcrunch.com/feed/", help="URL del feed RSS"
 )
-@click.option("--db", default="news.db", help="Archivo de base de datos SQLite")
-def scrape(feed: str, db: str) -> None:
-    """Descarga artículos de un feed RSS y los guarda en la base de datos."""
+def scrape(feed: str) -> None:
+    """Descarga artículos de un feed RSS y los guarda en PostgreSQL."""
+    # Asegurar que la tabla news existe en PostgreSQL
+    from ai_mastery.db_manager import init_db
+    init_db()
+
     click.echo(f"🔍 Obteniendo artículos de: {feed}")
     articles = scraper.fetch_feed(feed)
     click.echo(f"📥 {len(articles)} artículos encontrados.")
-    saved = scraper.save_articles(db, articles)
-    click.echo(f"✅ {saved} artículos nuevos guardados en {db}.")
+    saved = scraper.save_articles("", articles)
+    click.echo(f"✅ {saved} artículos nuevos guardados en PostgreSQL.")
 
 
 @cli.command()
 @click.argument("keyword")
-@click.option("--db", default="news.db", help="Archivo de base de datos SQLite")
-def search(keyword: str, db: str) -> None:
-    """Busca noticias en la base de datos por palabra clave."""
-    import sqlite3
-
-    conn = sqlite3.connect(db)
-    cursor = conn.cursor()
-    cursor.execute(
-        """
-        SELECT title, link, published FROM news
-        WHERE title LIKE ? OR summary LIKE ?
-        ORDER BY published DESC
-    """,
-        (f"%{keyword}%", f"%{keyword}%"),
-    )
-    results = cursor.fetchall()
-    conn.close()
+def search(keyword: str) -> None:
+    """Busca noticias en PostgreSQL por palabra clave."""
+    from ai_mastery.db_manager import search_articles
+    results = search_articles(keyword)
     if not results:
         click.echo(f"No se encontraron noticias con '{keyword}'.")
         return
     click.echo(f"🔎 Resultados para '{keyword}':\n")
-    for title, link, published in results:
-        click.echo(f"📰 {title}")
-        click.echo(f"   {link}")
-        if published:
-            click.echo(f"   {published}")
+    for row in results:
+        click.echo(f"📰 {row['title']}")
+        click.echo(f"   {row['link']}")
+        if row.get('published'):
+            click.echo(f"   {row['published']}")
         click.echo()
 
 
@@ -274,7 +264,7 @@ def research(feed_url: str, question: str, collection: str, db_dir: str, model: 
 )
 def web_scrape(url: str) -> None:
     """Extrae y muestra los títulos de una página web usando Playwright."""
-    from ai_mastery import scraper_web  # Importación local para evitar dependencia en CI
+    from ai_mastery import scraper_web  # Importación local
 
     click.echo(f"🌐 Accediendo a: {url}")
     click.echo("⏳ Extrayendo títulos...\n")
@@ -316,7 +306,7 @@ def scrape_jobs(url: str, output: str) -> None:
 
 
 @cli.command()
-@click.option("--cv-file", required=True, help="Ruta al archivo de texto con el CV")
+@click.option("--cv-file", required=True, help="Ruta al archivo con el CV (txt o pdf)")
 @click.option("--keyword", required=True, help="Palabra clave para buscar ofertas")
 @click.option("--location", default="Madrid", help="Ubicación de las ofertas")
 def postular(cv_file: str, keyword: str, location: str) -> None:
@@ -327,8 +317,16 @@ def postular(cv_file: str, keyword: str, location: str) -> None:
         click.echo(f"❌ Error: El archivo de CV '{cv_file}' no existe.")
         return
 
-    with open(cv_file, "r", encoding="utf-8") as f:
-        cv_text = f.read()
+    # Leer el CV según su formato
+    if cv_file.endswith(".pdf"):
+        from PyPDF2 import PdfReader
+        reader = PdfReader(cv_file)
+        cv_text = ""
+        for page in reader.pages:
+            cv_text += page.extract_text() or ""
+    else:
+        with open(cv_file, "r", encoding="utf-8") as f:
+            cv_text = f.read()
 
     click.echo(f"📋 Creando equipo de agentes para '{keyword}' en '{location}'...")
     crew = crew_module.crear_equipo_postulacion(cv_text, keyword, location)

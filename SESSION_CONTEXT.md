@@ -3,7 +3,7 @@
 **Proyecto:** ai-mastery  
 **Repositorio:** https://github.com/spl248/ai-mastery  
 **Objetivo global:** Plan Definitivo v4.1 – De cero a mejor ingeniero IA + agencia.  
-**Estado actual:** Mes 4 en curso. Días 17‑18 completados (Docker Hub + Prefect Cloud). Próximo paso: PostgreSQL y Redis.
+**Estado actual:** Mes 4 en curso. Día 18 completado (Prefect Cloud). Próximo paso: PostgreSQL y Redis.
 
 ## 🧠 Quién eres y cómo trabajas
 - Eres Samuel, trabajas en paralelo con un empleo financiador (mañanas y fines de semana).

@@ -29,7 +29,7 @@ Mientras tanto, puedes ver el CLI en acción en este vídeo de 2 minutos: [Ver d
 | `init NOMBRE` | Crea un nuevo proyecto con plantilla | `python src/ai_mastery/cli.py init mi_proyecto` |
 | `test` | Ejecuta los tests con pytest | `python src/ai_mastery/cli.py test` |
 | `run [SCRIPT]` | Ejecuta un script Python (por defecto `scripts/demo.py`) | `python src/ai_mastery/cli.py run` |
-| `scrape` | Descarga artículos de un feed RSS y los guarda en SQLite | `python src/ai_mastery/cli.py scrape --feed URL` |
+| `scrape` | Descarga artículos de un feed RSS y los guarda en PostgreSQL | `python src/ai_mastery/cli.py scrape --feed URL` |
 | `search PALABRA` | Busca noticias en la base de datos por palabra clave | `python src/ai_mastery/cli.py search Microsoft` |
 | `ask "PREGUNTA"` | Envía una pregunta al modelo de IA local (Ollama) | `python src/ai_mastery/cli.py ask "¿Qué es Ollama?"` |
 | `embed "TEXTO"` | Obtiene embedding vectorial con Ollama | `python src/ai_mastery/cli.py embed "texto"` |
@@ -69,6 +69,7 @@ ai-mastery/
 │   ├── cli.py
 │   ├── utils.py
 │   ├── scraper.py
+│   ├── db_manager.py
 │   ├── ollama_client.py
 │   ├── agent.py
 │   ├── memory.py
@@ -127,6 +128,7 @@ ai-mastery/
   🐳 [Imagen en Docker Hub](https://hub.docker.com/r/samuel199711/ai-mastery-bot)
 - **Día 18:** Orquestación con Prefect Cloud – flujo diario programado.  
   ⚡ [Prefect Cloud](https://app.prefect.cloud)
+- **Día 19:** Migración a PostgreSQL (Supabase) y caché con Redis. Scraper y CLI actualizados.
 
-**Próximo día:** Día 19 – Escalado (PostgreSQL + Redis).
+**Próximo día:** Día 20 – Versionado de prompts (YAML).
 
