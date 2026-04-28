@@ -133,5 +133,10 @@ ai-mastery/
   ⚡ [Prefect Cloud](https://app.prefect.cloud)
 - **Día 19:** Migración a PostgreSQL (Supabase) y caché con Redis. Scraper y CLI actualizados.
 - **Día 20:** Sistema de versionado de prompts con archivos YAML.
+- **Viernes de Ajuste Mes 4:** Análisis de logs, documentación de fallos en LESSONS.md y Case Study en PDF.
+### 🔔 Notificaciones configuradas
+- **Slack:** Canal `#alertas-prefect` con alertas automáticas desde Prefect Cloud.
+- **Estados:** Aviso en tiempo real cuando el flujo `Bot de Postulación Diario` entra en `Failed` o `Crashed`.
 
-**Próximo día:** Viernes de Ajuste del Mes 4.
+**Próximo día:** Mes 5 – Especialización (Fine‑tuning y RAG Avanzado).
+

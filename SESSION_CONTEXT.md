@@ -3,7 +3,7 @@
 **Proyecto:** ai-mastery  
 **Repositorio:** https://github.com/spl248/ai-mastery  
 **Objetivo global:** Plan Definitivo v4.1 – De cero a mejor ingeniero IA + agencia.  
-**Estado actual:** Mes 4 completado al 100% (5/5). Próximo paso: Viernes de Ajuste del Mes 4.
+**Estado actual:** Mes 4 y Viernes de Ajuste completados. Próximo paso: Mes 5 (Fine‑tuning y RAG Avanzado).
 
 ## 🧠 Quién eres y cómo trabajas
 - Eres Samuel, trabajas en paralelo con un empleo financiador (mañanas y fines de semana).
@@ -51,10 +51,10 @@ ai-mastery/
 ### Mes 4 (5/5)
 - ✅ Dockerfile multi‑stage funcional y subido a Docker Hub
 - ✅ Pipeline CI/CD que construye y sube la imagen a Docker Hub
-- ✅ Flujo en Prefect Cloud desplegado y programado diariamente (06:00 UTC)
+- ✅ Flujo en Prefect Cloud desplegado y programado diariamente (06:00 UTC) con notificaciones Slack
 - ✅ Migración a PostgreSQL (Supabase) y Redis para caché
 - ✅ Sistema de versionado de prompts (YAML)
-- 🔲 Viernes de Ajuste (análisis de logs, Case Study)
+- ✅ Viernes de Ajuste (análisis de logs, Case Study en PDF, LESSONS.md actualizado)
 
 ## 🔗 Enlaces importantes
 - Vídeo demo Mes 3: https://youtu.be/xAT-WcJt7fk
@@ -65,12 +65,16 @@ ai-mastery/
 - ⚡ Prefect Cloud: https://app.prefect.cloud
 - 🗄️ Supabase: [Dashboard](https://supabase.com/dashboard/project/syrbdpvgwbbjbjxektcg)
 
+## 🔔 Notificaciones
+- **Slack:** `#alertas-prefect` activo con avisos de Prefect Cloud.
+- **Triggers:** `Failed` y `Crashed`.
+
 ## 🔜 Próximo paso inmediato
-**Viernes de Ajuste Mes 4:** Análisis de logs, documentar fallos en LESSONS.md, publicar Case Study.
+**Mes 5:** Especialización – Fine‑tuning con Unsloth y RAG Avanzado.
 
 ## 🧪 Estado técnico
 - **Tests pasando:** 41
-- **Último commit:** 8a25c15 (Sistema de versionado de prompts YAML (Día 20))
+- **Último commit:** fcde0ad (Cierre Viernes de Ajuste Mes 4: Case Study, lecciones y documentación).
 - **CI/CD:** ✅ Verde
 - **Archivos importantes recientes:** `Dockerfile`, `.github/workflows/ci.yml` (job docker), `flows/bot_flow.py`, `prefect.yaml`, `crew_module.py`, `bot_integrator.py`, `app.py`, `db_manager.py`, `prompt_loader.py`, `prompts/default_prompts.yaml`.
 
