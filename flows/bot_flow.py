@@ -9,9 +9,13 @@ def ejecutar_bot(cv_path: str, keyword: str, location: str) -> list[dict]:
     """Tarea que ejecuta el bot de postulación."""
     logger = get_run_logger()
     logger.info(f"Iniciando bot con CV={cv_path}, keyword={keyword}, location={location}")
-    resultados = bot_integrator.run_bot(cv_path=cv_path, keyword=keyword, location=location)
-    logger.info(f"Bot finalizado. {len(resultados)} cartas generadas.")
-    return resultados
+    try:
+        resultados = bot_integrator.run_bot(cv_path=cv_path, keyword=keyword, location=location)
+        logger.info(f"Bot finalizado. {len(resultados)} cartas generadas.")
+        return resultados
+    except Exception as e:
+        logger.warning(f"No se pudo ejecutar el bot (posiblemente Ollama no disponible): {e}")
+        return []
 
 
 @flow(name="Bot de Postulación Diario", description="Ejecuta el bot de postulación y notifica los resultados.")
