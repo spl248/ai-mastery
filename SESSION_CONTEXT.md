@@ -3,7 +3,7 @@
 **Proyecto:** ai-mastery  
 **Repositorio:** https://github.com/spl248/ai-mastery  
 **Objetivo global:** Plan Definitivo v4.1 – De cero a mejor ingeniero IA + agencia.  
-**Estado actual:** Mes 4 en curso. Días 17‑19 completados (Docker Hub, Prefect Cloud, PostgreSQL + Redis). Próximo paso: versionado de prompts.
+**Estado actual:** Mes 4 completado al 100% (5/5). Próximo paso: Viernes de Ajuste del Mes 4.
 
 ## 🧠 Quién eres y cómo trabajas
 - Eres Samuel, trabajas en paralelo con un empleo financiador (mañanas y fines de semana).
@@ -13,14 +13,16 @@
 ## 📦 Stack técnico
 - Python 3.12, .venv, pyproject.toml (ruff, mypy, pytest)
 - GitHub Actions (CI/CD verde), Docker (multi‑stage), Playwright, Ollama (mistral, tinyllama), ChromaDB, LangChain, CrewAI, Streamlit, Prefect
-- PyPDF2, feedparser, fpdf2
+- PyPDF2, feedparser, fpdf2, PyYAML
 
-## 📂 Estructura del proyecto (Día 19)
+## 📂 Estructura del proyecto (Día 20)
 ai-mastery/
-├── src/ai_mastery/ (cli, utils, scraper, ollama_client, agent, memory, assistant, scraper_web, crew_module, bot_integrator)
+├── src/ai_mastery/ (cli, utils, scraper, db_manager, prompt_loader, ollama_client, agent, memory, assistant, scraper_web, crew_module, bot_integrator)
 ├── tests/ (tests para cada módulo)
 ├── flows/ (flujos de Prefect)
 ├── scripts/demo.py
+├── prompts/
+│   └── default_prompts.yaml
 ├── Dockerfile
 ├── app.py
 ├── jobs_demo.json
@@ -46,12 +48,12 @@ ai-mastery/
 - Dashboard Streamlit desplegado en HF Spaces
 - Artículo final en Medium + vídeo demo en YouTube
 
-- ### Mes 4 (4/5 – avance)
+### Mes 4 (5/5)
 - ✅ Dockerfile multi‑stage funcional y subido a Docker Hub
 - ✅ Pipeline CI/CD que construye y sube la imagen a Docker Hub
 - ✅ Flujo en Prefect Cloud desplegado y programado diariamente (06:00 UTC)
 - ✅ Migración a PostgreSQL (Supabase) y Redis para caché
-- 🔲 Sistema de versionado de prompts (YAML)
+- ✅ Sistema de versionado de prompts (YAML)
 - 🔲 Viernes de Ajuste (análisis de logs, Case Study)
 
 ## 🔗 Enlaces importantes
@@ -64,16 +66,17 @@ ai-mastery/
 - 🗄️ Supabase: [Dashboard](https://supabase.com/dashboard/project/syrbdpvgwbbjbjxektcg)
 
 ## 🔜 Próximo paso inmediato
-**Día 20:** Sistema de versionado de prompts (YAML).
+**Viernes de Ajuste Mes 4:** Análisis de logs, documentar fallos en LESSONS.md, publicar Case Study.
 
 ## 🧪 Estado técnico
 - **Tests pasando:** 41
-- **Último commit:** dff984a (Migración a PostgreSQL y Redis, actualización de scraper y CLI (Día 19))
+- **Último commit:** 8a25c15 (Sistema de versionado de prompts YAML (Día 20))
 - **CI/CD:** ✅ Verde
-- **Archivos importantes recientes:** `Dockerfile`, `.github/workflows/ci.yml` (job docker), `flows/bot_flow.py`, `prefect.yaml`, `crew_module.py`, `bot_integrator.py`, `app.py`, `db_manager.py`.
+- **Archivos importantes recientes:** `Dockerfile`, `.github/workflows/ci.yml` (job docker), `flows/bot_flow.py`, `prefect.yaml`, `crew_module.py`, `bot_integrator.py`, `app.py`, `db_manager.py`, `prompt_loader.py`, `prompts/default_prompts.yaml`.
 
 ## 📌 Notas clave para continuar
 - Para mantener el contexto en nuevos chats, pegar siempre SESSION_CONTEXT.md al inicio, seguido del Plan de Seguimiento y el README.md si es necesario.
 - El Space de Hugging Face no tiene Ollama; el dashboard usa fallback profesional (cartas de demo).
 - La imagen Docker se construye y sube automáticamente en cada push a main.
 - El flujo de Prefect `bot-diario` se ejecuta automáticamente cada día a las 06:00 UTC en la infraestructura gestionada de Prefect Cloud.
+- Los prompts del agente redactor y del asistente de investigación ahora se cargan desde `prompts/default_prompts.yaml` mediante `prompt_loader.py`.

@@ -70,6 +70,7 @@ ai-mastery/
 │   ├── utils.py
 │   ├── scraper.py
 │   ├── db_manager.py
+│   ├── prompt_loader.py
 │   ├── ollama_client.py
 │   ├── agent.py
 │   ├── memory.py
@@ -90,6 +91,8 @@ ai-mastery/
 ├── flows/
 │   └── bot_flow.py
 ├── scripts/demo.py
+├── prompts/
+│   └── default_prompts.yaml
 ├── Dockerfile
 ├── app.py
 ├── jobs_demo.json
@@ -129,6 +132,6 @@ ai-mastery/
 - **Día 18:** Orquestación con Prefect Cloud – flujo diario programado.  
   ⚡ [Prefect Cloud](https://app.prefect.cloud)
 - **Día 19:** Migración a PostgreSQL (Supabase) y caché con Redis. Scraper y CLI actualizados.
+- **Día 20:** Sistema de versionado de prompts con archivos YAML.
 
-**Próximo día:** Día 20 – Versionado de prompts (YAML).
-
+**Próximo día:** Viernes de Ajuste del Mes 4.
