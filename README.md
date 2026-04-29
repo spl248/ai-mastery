@@ -137,6 +137,9 @@ ai-mastery/
 ### 🔔 Notificaciones configuradas
 - **Slack:** Canal `#alertas-prefect` con alertas automáticas desde Prefect Cloud.
 - **Estados:** Aviso en tiempo real cuando el flujo `Bot de Postulación Diario` entra en `Failed` o `Crashed`.
+- Semana 17 (Mes 5): Fine‑tuning de Llama 3.2 1B con Unsloth en Google Colab (GPU T4).
+- Dataset: alpaca‑cleaned (500 ejemplos). Modelo fine‑tuneado y subido a Hugging Face Hub.
+- 🤖 llama3-finetuned-alpaca
 
-**Próximo día:** Mes 5 – Especialización (Fine‑tuning y RAG Avanzado).
+Próximo paso: Semana 18 – RAG avanzado (HyDE, reranking, self‑querying).
 

@@ -3,7 +3,7 @@
 **Proyecto:** ai-mastery  
 **Repositorio:** https://github.com/spl248/ai-mastery  
 **Objetivo global:** Plan Definitivo v4.1 – De cero a mejor ingeniero IA + agencia.  
-**Estado actual:** Mes 4 y Viernes de Ajuste completados. Próximo paso: Mes 5 (Fine‑tuning y RAG Avanzado).
+**Estado actual:** Semana 17 del Mes 5 completada (fine‑tuning). Próximo paso: Semana 18 (RAG avanzado).
 
 ## 🧠 Quién eres y cómo trabajas
 - Eres Samuel, trabajas en paralelo con un empleo financiador (mañanas y fines de semana).
@@ -14,13 +14,17 @@
 - Python 3.12, .venv, pyproject.toml (ruff, mypy, pytest)
 - GitHub Actions (CI/CD verde), Docker (multi‑stage), Playwright, Ollama (mistral, tinyllama), ChromaDB, LangChain, CrewAI, Streamlit, Prefect
 - PyPDF2, feedparser, fpdf2, PyYAML
+- **Nuevo:** Unsloth, LoRA (peft), Hugging Face Hub (subida de modelos)
 
-## 📂 Estructura del proyecto (Día 20)
+## 📂 Estructura del proyecto (Semana 17)
 ai-mastery/
 ├── src/ai_mastery/ (cli, utils, scraper, db_manager, prompt_loader, ollama_client, agent, memory, assistant, scraper_web, crew_module, bot_integrator)
 ├── tests/ (tests para cada módulo)
 ├── flows/ (flujos de Prefect)
-├── scripts/demo.py
+├── scripts/
+│   ├── demo.py
+│   ├── prepare_dataset.py
+│   └── fine_tune.py
 ├── prompts/
 │   └── default_prompts.yaml
 ├── Dockerfile
@@ -56,6 +60,11 @@ ai-mastery/
 - ✅ Sistema de versionado de prompts (YAML)
 - ✅ Viernes de Ajuste (análisis de logs, Case Study en PDF, LESSONS.md actualizado)
 
+### Mes 5 (avance)
+- ✅ Modelo fine‑tuneado (Llama 3.2 1B) con Unsloth en Google Colab (GPU T4).
+- ✅ Dataset alpaca‑cleaned (500 muestras) utilizado.
+- ✅ Modelo y tokenizador subidos a Hugging Face Hub.
+
 ## 🔗 Enlaces importantes
 - Vídeo demo Mes 3: https://youtu.be/xAT-WcJt7fk
 - Artículo final Mes 3: https://medium.com/@spulido248/automatic%C3%A9-mi-b%C3%BAsqueda-de-empleo-un-bot-multi-agente-que-postula-por-m%C3%AD-391afce28cbb
@@ -64,19 +73,20 @@ ai-mastery/
 - 🐳 Imagen Docker Hub: https://hub.docker.com/r/samuel199711/ai-mastery-bot
 - ⚡ Prefect Cloud: https://app.prefect.cloud
 - 🗄️ Supabase: [Dashboard](https://supabase.com/dashboard/project/syrbdpvgwbbjbjxektcg)
+- 🤖 Modelo fine‑tuneado: https://huggingface.co/Samuel11111997/llama3-finetuned-alpaca
 
 ## 🔔 Notificaciones
 - **Slack:** `#alertas-prefect` activo con avisos de Prefect Cloud.
 - **Triggers:** `Failed` y `Crashed`.
 
 ## 🔜 Próximo paso inmediato
-**Mes 5:** Especialización – Fine‑tuning con Unsloth y RAG Avanzado.
+**Semana 18:** RAG avanzado – HyDE, reranking, self‑querying.
 
 ## 🧪 Estado técnico
 - **Tests pasando:** 41
-- **Último commit:** fcde0ad (Cierre Viernes de Ajuste Mes 4: Case Study, lecciones y documentación).
+- **Último commit:** `fcde0ad` (Cierre Viernes de Ajuste Mes 4). **Pendiente commit con documentación del fine‑tuning.**
 - **CI/CD:** ✅ Verde
-- **Archivos importantes recientes:** `Dockerfile`, `.github/workflows/ci.yml` (job docker), `flows/bot_flow.py`, `prefect.yaml`, `crew_module.py`, `bot_integrator.py`, `app.py`, `db_manager.py`, `prompt_loader.py`, `prompts/default_prompts.yaml`.
+- **Archivos importantes recientes:** `Dockerfile`, `.github/workflows/ci.yml` (job docker), `flows/bot_flow.py`, `prefect.yaml`, `crew_module.py`, `bot_integrator.py`, `app.py`, `db_manager.py`, `prompt_loader.py`, `prompts/default_prompts.yaml`, `scripts/fine_tune.py`.
 
 ## 📌 Notas clave para continuar
 - Para mantener el contexto en nuevos chats, pegar siempre SESSION_CONTEXT.md al inicio, seguido del Plan de Seguimiento y el README.md si es necesario.
@@ -84,3 +94,4 @@ ai-mastery/
 - La imagen Docker se construye y sube automáticamente en cada push a main.
 - El flujo de Prefect `bot-diario` se ejecuta automáticamente cada día a las 06:00 UTC en la infraestructura gestionada de Prefect Cloud.
 - Los prompts del agente redactor y del asistente de investigación ahora se cargan desde `prompts/default_prompts.yaml` mediante `prompt_loader.py`.
+- **El fine‑tuning con Unsloth requiere GPU. Para el Mes 5 se ha utilizado Google Colab con una T4. El script `scripts/fine_tune.py` es una versión CPU‑friendly de respaldo para iteraciones rápidas.**
