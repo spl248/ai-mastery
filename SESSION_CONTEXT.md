@@ -64,6 +64,12 @@ ai-mastery/
 - ✅ Modelo fine‑tuneado (Llama 3.2 1B) con Unsloth en Google Colab (GPU T4).
 - ✅ Dataset alpaca‑cleaned (500 muestras) utilizado.
 - ✅ Modelo y tokenizador subidos a Hugging Face Hub.
+- ✅ Landing page de la agencia creada en Carrd.co.
+### Viernes de Ajuste — Semana 17
+- ✅ Artículo técnico en Medium publicado.
+- ✅ Vídeo demo en YouTube subido.
+- ✅ Model Card actualizada en Hugging Face.
+- ✅ Documentación (README, SESSION CONTEXT, PLAN DE SEGUIMIENTO) actualizada.
 
 ## 🔗 Enlaces importantes
 - Vídeo demo Mes 3: https://youtu.be/xAT-WcJt7fk
@@ -74,6 +80,8 @@ ai-mastery/
 - ⚡ Prefect Cloud: https://app.prefect.cloud
 - 🗄️ Supabase: [Dashboard](https://supabase.com/dashboard/project/syrbdpvgwbbjbjxektcg)
 - 🤖 Modelo fine‑tuneado: https://huggingface.co/Samuel11111997/llama3-finetuned-alpaca
+- 🌐 Landing page agencia: https://samuel-pulido-ia.carrd.co
+- 🎬 Vídeo demo fine‑tuning: https://www.youtube.com/watch?v=BfCH0LS43kg
 
 ## 🔔 Notificaciones
 - **Slack:** `#alertas-prefect` activo con avisos de Prefect Cloud.
