@@ -1,4 +1,7 @@
-﻿"""HyDE: Hypothetical Document Embeddings para RAG avanzado."""
+﻿@"
+"""HyDE: Hypothetical Document Embeddings para RAG avanzado."""
+from typing import Any
+
 from ai_mastery.memory import MemoryManager
 from ai_mastery.ollama_client import embed, generate
 
@@ -11,20 +14,29 @@ def generate_hypothetical_document(query: str) -> str:
         f"Pregunta: {query}\n\n"
         "Párrafo:"
     )
-    response = generate(prompt, model="mistral")
+    response: str | None = generate(prompt, model="mistral")
+    if response is None:
+        return "No se pudo generar un documento hipotético."
     return response.strip()
 
 
-def hyde_search(query: str, collection_name: str = "research_docs", k: int = 3) -> list:
+def hyde_search(
+    query: str, collection_name: str = "research_docs", k: int = 3
+) -> list[dict[str, Any]]:
     hypothetical_doc = generate_hypothetical_document(query)
     print(f"\n📝 Documento hipotético generado:\n{hypothetical_doc[:200]}...")
+    
     hypothetical_embedding = embed(hypothetical_doc)
+    if hypothetical_embedding is None:
+        print("❌ No se pudo obtener el embedding del documento hipotético.")
+        return []
+    
     memory = MemoryManager(collection_name)
     results = memory.collection.query(
         query_embeddings=[hypothetical_embedding],
         n_results=k,
     )
-    documents = []
+    documents: list[dict[str, Any]] = []
     if results["documents"] and results["documents"][0]:
         for i, doc in enumerate(results["documents"][0]):
             metadata = results["metadatas"][0][i] if results["metadatas"] else {}
@@ -34,3 +46,4 @@ def hyde_search(query: str, collection_name: str = "research_docs", k: int = 3) 
                 "distance": results["distances"][0][i] if results["distances"] else None,
             })
     return documents
+"@ | Out-File -FilePath src/ai_mastery/hyde.py -Encoding utf8
