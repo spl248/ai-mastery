@@ -221,6 +221,21 @@ def query(question: str, collection: str, db_dir: str, n_results: int) -> None:
     for i, res in enumerate(results, 1):
         click.echo(f"{i}. {res['content'][:200]}... (distancia: {res['distance']:.4f})")
 
+@cli.command("hyde-query")
+@click.argument("pregunta")
+def hyde_query_command(pregunta):
+    """Realiza una búsqueda inteligente usando HyDE."""
+    from ai_mastery.hyde import hyde_search
+
+    resultados = hyde_search(pregunta)
+    if not resultados:
+        click.echo("No se encontraron documentos relevantes.")
+        return
+
+    click.echo(f"\n🔍 HyDE para: {pregunta}\n")
+    for i, doc in enumerate(resultados):
+        click.echo(f"{i+1}. {doc['content'][:150]}...")
+        click.echo(f"   📏 Distancia: {doc['distance']:.4f}\n")
 
 @cli.command()
 @click.argument("feed_url")
