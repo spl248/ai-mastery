@@ -223,7 +223,7 @@ def query(question: str, collection: str, db_dir: str, n_results: int) -> None:
 
 @cli.command("hyde-query")
 @click.argument("pregunta")
-def hyde_query_command(pregunta):
+def hyde_query_command(pregunta: str) -> None:
     """Realiza una búsqueda inteligente usando HyDE."""
     from ai_mastery.hyde import hyde_search
 

@@ -25,7 +25,7 @@ def hyde_search(
     hypothetical_doc = generate_hypothetical_document(query)
     print(f"\n📝 Documento hipotético generado:\n{hypothetical_doc[:200]}...")
 
-    hypothetical_embedding = embed(hypothetical_doc)
+    hypothetical_embedding: list[float] = embed(hypothetical_doc)  # type: ignore[assignment]
     if hypothetical_embedding is None:
         print("❌ No se pudo obtener el embedding del documento hipotético.")
         return []
