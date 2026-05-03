@@ -65,6 +65,7 @@ ai-mastery/
 - ✅ Dataset alpaca‑cleaned (500 muestras) utilizado.
 - ✅ Modelo y tokenizador subidos a Hugging Face Hub.
 - ✅ Landing page de la agencia creada en Carrd.co.
+- ✅ HyDE (Hypothetical Document Embeddings) implementado y validado. Mejora la búsqueda RAG.
 ### Viernes de Ajuste — Semana 17
 - ✅ Artículo técnico en Medium publicado.
 - ✅ Vídeo demo en YouTube subido.
@@ -82,6 +83,7 @@ ai-mastery/
 - 🤖 Modelo fine‑tuneado: https://huggingface.co/Samuel11111997/llama3-finetuned-alpaca
 - 🌐 Landing page agencia: https://samuel-pulido-ia.carrd.co
 - 🎬 Vídeo demo fine‑tuning: https://www.youtube.com/watch?v=BfCH0LS43kg
+- ✍️ Artículo fine‑tuning: https://medium.com/@spulido248/fine-tuning-de-llama-3-2-con-unsloth-el-siguiente-nivel-de-la-especializaci%C3%B3n-en-ia-9c909337c8e6
 
 ## 🔔 Notificaciones
 - **Slack:** `#alertas-prefect` activo con avisos de Prefect Cloud.
@@ -92,7 +94,7 @@ ai-mastery/
 
 ## 🧪 Estado técnico
 - **Tests pasando:** 41
-- **Último commit:** `fcde0ad` (Cierre Viernes de Ajuste Mes 4). **Pendiente commit con documentación del fine‑tuning.**
+- Último commit: 55d3b88 (Cierre Viernes de Ajuste Semana 17: artículo y vídeo demo fine‑tuning).
 - **CI/CD:** ✅ Verde
 - **Archivos importantes recientes:** `Dockerfile`, `.github/workflows/ci.yml` (job docker), `flows/bot_flow.py`, `prefect.yaml`, `crew_module.py`, `bot_integrator.py`, `app.py`, `db_manager.py`, `prompt_loader.py`, `prompts/default_prompts.yaml`, `scripts/fine_tune.py`.
 

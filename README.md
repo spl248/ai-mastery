@@ -139,11 +139,11 @@ ai-mastery/
 - **Estados:** Aviso en tiempo real cuando el flujo `Bot de Postulación Diario` entra en `Failed` o `Crashed`.
 - Semana 17 (Mes 5): Fine‑tuning de Llama 3.2 1B con Unsloth en Google Colab (GPU T4).
 - Dataset: alpaca‑cleaned (500 ejemplos). Modelo fine‑tuneado y subido a Hugging Face Hub.
-- 🤖 llama3-finetuned-alpaca
+🤖 [llama3-finetuned-alpaca](https://huggingface.co/Samuel11111997/llama3-finetuned-alpaca)
 - 🌐 **Landing page de la agencia:** [samuel-pulido-ia.carrd.co](https://samuel-pulido-ia.carrd.co)
 - **Viernes de Ajuste (Semana 17):**  
   ✍️ [Artículo: Fine‑tuning de Llama 3.2 con Unsloth](https://medium.com/@spulido248/fine-tuning-de-llama-3-2-con-unsloth-el-siguiente-nivel-de-la-especializaci%C3%B3n-en-ia-9c909337c8e6)  
   🎬 [Vídeo demo del modelo](https://www.youtube.com/watch?v=BfCH0LS43kg)
-
+- **Semana 18 (avance):** HyDE (Hypothetical Document Embeddings) implementado y validado. Mejora la búsqueda RAG respecto a embeddings directos.
 Próximo paso: Semana 18 – RAG avanzado (HyDE, reranking, self‑querying).
 
