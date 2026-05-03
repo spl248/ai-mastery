@@ -1,5 +1,5 @@
 ﻿"""HyDE: Hypothetical Document Embeddings para RAG avanzado."""
-from typing import Any
+from typing import Any, cast
 
 from ai_mastery.memory import MemoryManager
 from ai_mastery.ollama_client import embed, generate
@@ -26,13 +26,10 @@ def hyde_search(
     print(f"\n📝 Documento hipotético generado:\n{hypothetical_doc[:200]}...")
 
     hypothetical_embedding: list[float] = embed(hypothetical_doc)  # type: ignore[assignment]
-    if hypothetical_embedding is None:
-        print("❌ No se pudo obtener el embedding del documento hipotético.")
-        return []
 
     memory = MemoryManager(collection_name)
     results = memory.collection.query(
-        query_embeddings=[hypothetical_embedding],
+        query_embeddings=cast(Any, [hypothetical_embedding]),
         n_results=k,
     )
     documents: list[dict[str, Any]] = []
@@ -45,4 +42,3 @@ def hyde_search(
                 "distance": results["distances"][0][i] if results["distances"] else None,
             })
     return documents
-
