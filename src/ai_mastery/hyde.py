@@ -1,6 +1,6 @@
 """HyDE: Hypothetical Document Embeddings para RAG avanzado."""
-from ai_mastery.ollama_client import generate, embed
 from ai_mastery.memory import MemoryManager
+from ai_mastery.ollama_client import embed, generate
 
 
 def generate_hypothetical_document(query: str) -> str:
@@ -25,12 +25,12 @@ def hyde_search(query: str, collection_name: str = "research_docs", k: int = 3) 
     1. Genera un documento hipotético con Ollama.
     2. Obtiene su embedding.
     3. Busca en ChromaDB los documentos más similares.
-    
+
     Args:
         query: pregunta del usuario.
         collection_name: nombre de la colección en ChromaDB.
         k: número de resultados a devolver.
-    
+
     Returns:
         Lista de documentos relevantes con su contenido y metadatos.
     """
