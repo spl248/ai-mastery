@@ -45,4 +45,4 @@ def hyde_search(
                 "distance": results["distances"][0][i] if results["distances"] else None,
             })
     return documents
-    
+
