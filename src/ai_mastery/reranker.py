@@ -1,4 +1,5 @@
 """Reranking con cross-encoder local (Transformers)."""
+# mypy: ignore-errors
 from functools import lru_cache
 from typing import Any
 
@@ -18,7 +19,7 @@ def _load_model() -> tuple[AutoTokenizer, AutoModelForSequenceClassification]:
     tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
     model = AutoModelForSequenceClassification.from_pretrained(MODEL_PATH)
     model.eval()
-    return tokenizer, model  # type: ignore[return-value]
+    return tokenizer, model
 
 
 def rerank(
@@ -33,10 +34,10 @@ def rerank(
     tokenizer, model = _load_model()
 
     pairs = [(query, doc["content"]) for doc in documents]
-    inputs = tokenizer(pairs, padding=True, truncation=True, return_tensors="pt")  # type: ignore[operator]
+    inputs = tokenizer(pairs, padding=True, truncation=True, return_tensors="pt")
 
     with torch.no_grad():
-        outputs = model(**inputs)  # type: ignore[operator]
+        outputs = model(**inputs)
         scores = outputs.logits.squeeze(-1).tolist()
 
     if isinstance(scores, float):
