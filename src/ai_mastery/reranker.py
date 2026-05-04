@@ -2,7 +2,7 @@
 from typing import Any
 
 import torch
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
+from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
 # Ruta exacta del modelo descargado con hf download
 MODEL_PATH = (
