@@ -144,6 +144,9 @@ ai-mastery/
 - **Viernes de Ajuste (Semana 17):**  
   ✍️ [Artículo: Fine‑tuning de Llama 3.2 con Unsloth](https://medium.com/@spulido248/fine-tuning-de-llama-3-2-con-unsloth-el-siguiente-nivel-de-la-especializaci%C3%B3n-en-ia-9c909337c8e6)  
   🎬 [Vídeo demo del modelo](https://www.youtube.com/watch?v=BfCH0LS43kg)
-- **Semana 18 (avance):** HyDE (Hypothetical Document Embeddings) implementado y validado. Mejora la búsqueda RAG respecto a embeddings directos.
+- **Semana 18 (avance):**
+  - HyDE (Hypothetical Document Embeddings) implementado y validado. Mejora la búsqueda RAG respecto a embeddings directos.
+  - Comando `hyde-query` integrado en el CLI.
+  - CI/CD pasando con Ruff y mypy.
 Próximo paso: Semana 18 – RAG avanzado (HyDE, reranking, self‑querying).
 

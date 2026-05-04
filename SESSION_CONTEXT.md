@@ -2,8 +2,8 @@
 
 **Proyecto:** ai-mastery  
 **Repositorio:** https://github.com/spl248/ai-mastery  
-**Objetivo global:** Plan Definitivo v4.1 – De cero a mejor ingeniero IA + agencia.  
-**Estado actual:** Semana 17 del Mes 5 completada (fine‑tuning). Próximo paso: Semana 18 (RAG avanzado).
+**Objetivo global:** Plan Definitivo v4.2 – De cero a mejor ingeniero IA + agencia.  
+Estado actual: Semana 18 del Mes 5 en progreso (HyDE completado). Próximo paso: Viernes de Ajuste Semana 18.
 
 ## 🧠 Quién eres y cómo trabajas
 - Eres Samuel, trabajas en paralelo con un empleo financiador (mañanas y fines de semana).
@@ -16,15 +16,18 @@
 - PyPDF2, feedparser, fpdf2, PyYAML
 - **Nuevo:** Unsloth, LoRA (peft), Hugging Face Hub (subida de modelos)
 
-## 📂 Estructura del proyecto (Semana 17)
+## 📂 Estructura del proyecto (Semana 18)
 ai-mastery/
-├── src/ai_mastery/ (cli, utils, scraper, db_manager, prompt_loader, ollama_client, agent, memory, assistant, scraper_web, crew_module, bot_integrator)
+├── src/ai_mastery/ (cli, utils, scraper, db_manager, prompt_loader, ollama_client, agent, memory, assistant, scraper_web, crew_module, bot_integrator, hyde)
 ├── tests/ (tests para cada módulo)
 ├── flows/ (flujos de Prefect)
 ├── scripts/
 │   ├── demo.py
 │   ├── prepare_dataset.py
-│   └── fine_tune.py
+│   ├──fine_tune.py
+    ├──test_hyde.py
+    └──test_directa.py
+
 ├── prompts/
 │   └── default_prompts.yaml
 ├── Dockerfile
@@ -65,7 +68,7 @@ ai-mastery/
 - ✅ Dataset alpaca‑cleaned (500 muestras) utilizado.
 - ✅ Modelo y tokenizador subidos a Hugging Face Hub.
 - ✅ Landing page de la agencia creada en Carrd.co.
-- ✅ HyDE (Hypothetical Document Embeddings) implementado y validado. Mejora la búsqueda RAG.
+- ✅ HyDE implementado, validado y comando hyde-query integrado en el CLI (CI/CD verde).
 ### Viernes de Ajuste — Semana 17
 - ✅ Artículo técnico en Medium publicado.
 - ✅ Vídeo demo en YouTube subido.
@@ -94,9 +97,9 @@ ai-mastery/
 
 ## 🧪 Estado técnico
 - **Tests pasando:** 41
-- Último commit: 55d3b88 (Cierre Viernes de Ajuste Semana 17: artículo y vídeo demo fine‑tuning).
+- Último commit: 9445847 (Fix: regenerar hyde.py con codificación limpia desde Notepad)
 - **CI/CD:** ✅ Verde
-- **Archivos importantes recientes:** `Dockerfile`, `.github/workflows/ci.yml` (job docker), `flows/bot_flow.py`, `prefect.yaml`, `crew_module.py`, `bot_integrator.py`, `app.py`, `db_manager.py`, `prompt_loader.py`, `prompts/default_prompts.yaml`, `scripts/fine_tune.py`.
+- **Archivos importantes recientes:** `Dockerfile`, `.github/workflows/ci.yml` (job docker), `flows/bot_flow.py`, `prefect.yaml`, `crew_module.py`, `bot_integrator.py`, `app.py`, `db_manager.py`, `prompt_loader.py`, `prompts/default_prompts.yaml`, `scripts/fine_tune.py`, `hyde.py`.
 
 ## 📌 Notas clave para continuar
 - Para mantener el contexto en nuevos chats, pegar siempre SESSION_CONTEXT.md al inicio, seguido del Plan de Seguimiento y el README.md si es necesario.
