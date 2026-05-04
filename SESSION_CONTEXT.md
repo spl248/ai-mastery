@@ -3,7 +3,7 @@
 **Proyecto:** ai-mastery  
 **Repositorio:** https://github.com/spl248/ai-mastery  
 **Objetivo global:** Plan Definitivo v4.2 – De cero a mejor ingeniero IA + agencia.  
-Estado actual: Semana 18 del Mes 5 en progreso (HyDE completado). Próximo paso: Viernes de Ajuste Semana 18.
+Estado actual: Semana 18 del Mes 5 completada (HyDE + reranking). Próximo paso: Viernes de Ajuste Semana 18.
 
 ## 🧠 Quién eres y cómo trabajas
 - Eres Samuel, trabajas en paralelo con un empleo financiador (mañanas y fines de semana).
@@ -18,16 +18,33 @@ Estado actual: Semana 18 del Mes 5 en progreso (HyDE completado). Próximo paso:
 
 ## 📂 Estructura del proyecto (Semana 18)
 ai-mastery/
-├── src/ai_mastery/ (cli, utils, scraper, db_manager, prompt_loader, ollama_client, agent, memory, assistant, scraper_web, crew_module, bot_integrator, hyde)
+├── src/ai_mastery/
+│   ├── __init__.py
+│   ├── cli.py
+│   ├── utils.py
+│   ├── scraper.py
+│   ├── db_manager.py
+│   ├── prompt_loader.py
+│   ├── ollama_client.py
+│   ├── agent.py
+│   ├── memory.py
+│   ├── assistant.py
+│   ├── scraper_web.py
+│   ├── crew_module.py
+│   ├── bot_integrator.py
+│   ├── hyde.py
+│   └── reranker.py
 ├── tests/ (tests para cada módulo)
-├── flows/ (flujos de Prefect)
+├── flows/
+│   └── bot_flow.py
 ├── scripts/
 │   ├── demo.py
 │   ├── prepare_dataset.py
-│   ├──fine_tune.py
-    ├──test_hyde.py
-    └──test_directa.py
-
+│   ├── fine_tune.py
+│   ├── test_hyde.py
+│   ├── test_directa.py
+│   ├── test_reranker.py
+│   └── test_crossencoder.py
 ├── prompts/
 │   └── default_prompts.yaml
 ├── Dockerfile
@@ -69,6 +86,7 @@ ai-mastery/
 - ✅ Modelo y tokenizador subidos a Hugging Face Hub.
 - ✅ Landing page de la agencia creada en Carrd.co.
 - ✅ HyDE implementado, validado y comando hyde-query integrado en el CLI (CI/CD verde).
+- ✅ Reranking con cross‑encoder implementado y validado. Pipeline RAG completo.
 ### Viernes de Ajuste — Semana 17
 - ✅ Artículo técnico en Medium publicado.
 - ✅ Vídeo demo en YouTube subido.
@@ -93,7 +111,7 @@ ai-mastery/
 - **Triggers:** `Failed` y `Crashed`.
 
 ## 🔜 Próximo paso inmediato
-**Semana 18:** RAG avanzado – HyDE, reranking, self‑querying.
+Viernes de Ajuste Semana 18: artículo y vídeo demo sobre el pipeline RAG completo.
 
 ## 🧪 Estado técnico
 - **Tests pasando:** 41

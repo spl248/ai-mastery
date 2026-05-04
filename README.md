@@ -148,5 +148,5 @@ ai-mastery/
   - HyDE (Hypothetical Document Embeddings) implementado y validado. Mejora la búsqueda RAG respecto a embeddings directos.
   - Comando `hyde-query` integrado en el CLI.
   - CI/CD pasando con Ruff y mypy.
-Próximo paso: Semana 18 – RAG avanzado (HyDE, reranking, self‑querying).
+  - Reranking con cross‑encoder (`ms-marco-MiniLM-L-6-v2`) implementado. Mejora la relevancia del pipeline RAG.
 
