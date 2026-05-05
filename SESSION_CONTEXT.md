@@ -3,7 +3,7 @@
 **Proyecto:** ai-mastery  
 **Repositorio:** https://github.com/spl248/ai-mastery  
 **Objetivo global:** Plan Definitivo v4.2 – De cero a mejor ingeniero IA + agencia.  
-Estado actual: Semana 18 del Mes 5 completada (HyDE + reranking). Próximo paso: Viernes de Ajuste Semana 18.
+**Estado actual:** Semana 18 y Viernes de Ajuste completados. Próximo paso: Semana 19 (Optimización de embeddings).
 
 ## 🧠 Quién eres y cómo trabajas
 - Eres Samuel, trabajas en paralelo con un empleo financiador (mañanas y fines de semana).
@@ -92,6 +92,10 @@ ai-mastery/
 - ✅ Vídeo demo en YouTube subido.
 - ✅ Model Card actualizada en Hugging Face.
 - ✅ Documentación (README, SESSION CONTEXT, PLAN DE SEGUIMIENTO) actualizada.
+### Viernes de Ajuste — Semana 18
+- ✅ Artículo técnico en Medium publicado.
+- ✅ Vídeo demo en YouTube subido.
+- ✅ Documentación actualizada.
 
 ## 🔗 Enlaces importantes
 - Vídeo demo Mes 3: https://youtu.be/xAT-WcJt7fk
@@ -105,13 +109,15 @@ ai-mastery/
 - 🌐 Landing page agencia: https://samuel-pulido-ia.carrd.co
 - 🎬 Vídeo demo fine‑tuning: https://www.youtube.com/watch?v=BfCH0LS43kg
 - ✍️ Artículo fine‑tuning: https://medium.com/@spulido248/fine-tuning-de-llama-3-2-con-unsloth-el-siguiente-nivel-de-la-especializaci%C3%B3n-en-ia-9c909337c8e6
+- ✍️ Artículo RAG (HyDE + reranking): https://medium.com/@spulido248/pipeline-rag-de-%C3%A9lite-hyde-y-reranking-con-cross-encoder-local-74cc35a6eb0e
+- 🎬 Vídeo demo RAG: https://youtu.be/qfLp8EanEmc
 
 ## 🔔 Notificaciones
 - **Slack:** `#alertas-prefect` activo con avisos de Prefect Cloud.
 - **Triggers:** `Failed` y `Crashed`.
 
 ## 🔜 Próximo paso inmediato
-Viernes de Ajuste Semana 18: artículo y vídeo demo sobre el pipeline RAG completo.
+**Semana 19:** Optimización de embeddings y bases vectoriales.
 
 ## 🧪 Estado técnico
 - **Tests pasando:** 41

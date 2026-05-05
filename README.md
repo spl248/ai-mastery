@@ -149,4 +149,9 @@ ai-mastery/
   - Comando `hyde-query` integrado en el CLI.
   - CI/CD pasando con Ruff y mypy.
   - Reranking con cross‑encoder (`ms-marco-MiniLM-L-6-v2`) implementado. Mejora la relevancia del pipeline RAG.
+- **Viernes de Ajuste (Semana 18):**  
+  ✍️ [Artículo: Pipeline RAG de Élite: HyDE y Reranking con Cross‑Encoder Local](https://medium.com/@spulido248/pipeline-rag-de-%C3%A9lite-hyde-y-reranking-con-cross-encoder-local-74cc35a6eb0e)  
+  🎬 [Vídeo demo del pipeline RAG](https://youtu.be/qfLp8EanEmc)
+
+  **Próximo paso:** Semana 19 – Optimización de embeddings y bases vectoriales.
 
