@@ -3,7 +3,7 @@
 **Proyecto:** ai-mastery  
 **Repositorio:** https://github.com/spl248/ai-mastery  
 **Objetivo global:** Plan Definitivo v4.2 – De cero a mejor ingeniero IA + agencia.  
-**Estado actual:** Semana 18 y Viernes de Ajuste completados. Próximo paso: Semana 19 (Optimización de embeddings).
+**Estado actual:** Semana 19 completada. Próximo paso: Semana 20 (Buscador semántico de papers).
 
 ## 🧠 Quién eres y cómo trabajas
 - Eres Samuel, trabajas en paralelo con un empleo financiador (mañanas y fines de semana).
@@ -16,7 +16,7 @@
 - PyPDF2, feedparser, fpdf2, PyYAML
 - **Nuevo:** Unsloth, LoRA (peft), Hugging Face Hub (subida de modelos)
 
-## 📂 Estructura del proyecto (Semana 18)
+## 📂 Estructura del proyecto (Semana 19)
 ai-mastery/
 ├── src/ai_mastery/
 │   ├── __init__.py
@@ -44,7 +44,9 @@ ai-mastery/
 │   ├── test_hyde.py
 │   ├── test_directa.py
 │   ├── test_reranker.py
-│   └── test_crossencoder.py
+│   ├──test_crossencoder.py
+    ├── benchmark_embeddings.py
+│   └── benchmark_embeddings.json
 ├── prompts/
 │   └── default_prompts.yaml
 ├── Dockerfile
@@ -87,6 +89,7 @@ ai-mastery/
 - ✅ Landing page de la agencia creada en Carrd.co.
 - ✅ HyDE implementado, validado y comando hyde-query integrado en el CLI (CI/CD verde).
 - ✅ Reranking con cross‑encoder implementado y validado. Pipeline RAG completo.
+- ✅ Benchmark de embeddings completado (Mistral vs TinyLlama). Mistral seleccionado como modelo principal (Recall@3 100%, MRR 0.87).
 ### Viernes de Ajuste — Semana 17
 - ✅ Artículo técnico en Medium publicado.
 - ✅ Vídeo demo en YouTube subido.
@@ -117,13 +120,13 @@ ai-mastery/
 - **Triggers:** `Failed` y `Crashed`.
 
 ## 🔜 Próximo paso inmediato
-**Semana 19:** Optimización de embeddings y bases vectoriales.
+**Semana 20:** Buscador semántico de papers de IA – Indexa abstracts de arXiv. API con FastAPI y Swagger para consultas.
 
 ## 🧪 Estado técnico
 - **Tests pasando:** 41
-- Último commit: 9445847 (Fix: regenerar hyde.py con codificación limpia desde Notepad)
+- Último commit: [completar tras el push]
 - **CI/CD:** ✅ Verde
-- **Archivos importantes recientes:** `Dockerfile`, `.github/workflows/ci.yml` (job docker), `flows/bot_flow.py`, `prefect.yaml`, `crew_module.py`, `bot_integrator.py`, `app.py`, `db_manager.py`, `prompt_loader.py`, `prompts/default_prompts.yaml`, `scripts/fine_tune.py`, `hyde.py`.
+- **Archivos importantes recientes:** `Dockerfile`, `.github/workflows/ci.yml` (job docker), `flows/bot_flow.py`, `prefect.yaml`, `crew_module.py`, `bot_integrator.py`, `app.py`, `db_manager.py`, `prompt_loader.py`, `prompts/default_prompts.yaml`, `scripts/fine_tune.py`, `hyde.py`, `reranker.py`, `scripts/benchmark_embeddings.py`.
 
 ## 📌 Notas clave para continuar
 - Para mantener el contexto en nuevos chats, pegar siempre SESSION_CONTEXT.md al inicio, seguido del Plan de Seguimiento y el README.md si es necesario.

@@ -1,0 +1,7 @@
+[
+  {"query": "¿Cómo especializar un modelo de IA?", "relevant": "El fine‑tuning permite adaptar modelos a tareas específicas."},
+  {"query": "¿Qué es el fine‑tuning?", "relevant": "El fine‑tuning es el proceso de ajustar un modelo preentrenado con datos específicos."},
+  {"query": "¿Qué es HyDE?", "relevant": "HyDE genera un documento hipotético para mejorar la búsqueda semántica."},
+  {"query": "¿Cómo reducir costes en una empresa?", "relevant": "La automatización con Python puede reducir costes hasta un 40%."},
+  {"query": "¿Dónde se almacenan los embeddings?", "relevant": "Las bases de datos vectoriales como ChromaDB almacenan y recuperan embeddings."}
+]

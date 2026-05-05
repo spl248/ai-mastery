@@ -152,6 +152,10 @@ ai-mastery/
 - **Viernes de Ajuste (Semana 18):**  
   ✍️ [Artículo: Pipeline RAG de Élite: HyDE y Reranking con Cross‑Encoder Local](https://medium.com/@spulido248/pipeline-rag-de-%C3%A9lite-hyde-y-reranking-con-cross-encoder-local-74cc35a6eb0e)  
   🎬 [Vídeo demo del pipeline RAG](https://youtu.be/qfLp8EanEmc)
+- **Semana 19 (completada):**  
+  🧪 Benchmark de embeddings (Mistral vs TinyLlama).  
+  Resultados: Mistral **Recall@3 100%**, MRR 0.87; TinyLlama Recall@3 20%, MRR 0.35.  
+  Mistral elegido como modelo oficial de embeddings del pipeline RAG.
 
-  **Próximo paso:** Semana 19 – Optimización de embeddings y bases vectoriales.
+**Próximo paso:** Semana 20 – Buscador semántico de papers de IA (FastAPI + Swagger).
 
