@@ -65,34 +65,49 @@ pytest
 ai-mastery/
 ├── .github/workflows/ci.yml
 ├── src/ai_mastery/
-│   ├── __init__.py
-│   ├── cli.py
-│   ├── utils.py
-│   ├── scraper.py
-│   ├── db_manager.py
-│   ├── prompt_loader.py
-│   ├── ollama_client.py
-│   ├── agent.py
-│   ├── memory.py
-│   ├── assistant.py
-│   ├── scraper_web.py
-│   ├── crew_module.py
-│   └── bot_integrator.py
+│ ├── init.py
+│ ├── cli.py
+│ ├── utils.py
+│ ├── scraper.py
+│ ├── db_manager.py
+│ ├── prompt_loader.py
+│ ├── ollama_client.py
+│ ├── agent.py
+│ ├── memory.py
+│ ├── assistant.py
+│ ├── scraper_web.py
+│ ├── crew_module.py
+│ ├── bot_integrator.py
+│ ├── hyde.py
+│ └── reranker.py
 ├── tests/
-│   ├── test_cli.py
-│   ├── test_scraper.py
-│   ├── test_ollama_client.py
-│   ├── test_agent.py
-│   ├── test_memory.py
-│   ├── test_assistant.py
-│   ├── test_scraper_web.py
-│   ├── test_crew_module.py
-│   └── test_bot_integrator.py
+│ ├── test_cli.py
+│ ├── test_scraper.py
+│ ├── test_ollama_client.py
+│ ├── test_agent.py
+│ ├── test_memory.py
+│ ├── test_assistant.py
+│ ├── test_scraper_web.py
+│ ├── test_crew_module.py
+│ ├── test_bot_integrator.py
+│ ├── test_hyde.py
+│ └── test_directa.py
 ├── flows/
-│   └── bot_flow.py
-├── scripts/demo.py
+│ └── bot_flow.py
+├── scripts/
+│ ├── demo.py
+│ ├── prepare_dataset.py
+│ ├── fine_tune.py
+│ ├── fetch_arxiv.py
+│ ├── index_arxiv_batch.py
+│ ├── benchmark_embeddings.py
+│ ├── build_spaces_data.py
+│ ├── test_hyde.py
+│ ├── test_directa.py
+│ ├── test_reranker.py
+│ └── test_crossencoder.py
 ├── prompts/
-│   └── default_prompts.yaml
+│ └── default_prompts.yaml
 ├── Dockerfile
 ├── app.py
 ├── jobs_demo.json
@@ -100,7 +115,9 @@ ai-mastery/
 ├── prefect.yaml
 ├── pyproject.toml
 ├── README.md
-└── LESSONS.md
+├── LESSONS.md
+├── benchmark_embeddings.json
+└── arxiv_papers.json
 ```
 
 ## 📈 Progreso
@@ -156,6 +173,10 @@ ai-mastery/
   🧪 Benchmark de embeddings (Mistral vs TinyLlama).  
   Resultados: Mistral **Recall@3 100%**, MRR 0.87; TinyLlama Recall@3 20%, MRR 0.35.  
   Mistral elegido como modelo oficial de embeddings del pipeline RAG.
-
-**Próximo paso:** Semana 20 – Buscador semántico de papers de IA (FastAPI + Swagger).
+- **Semana 20 (completada):**  
+  🔍 Buscador semántico de papers de arXiv desplegado.  
+  🌐 Demo pública en Hugging Face Spaces con Mistral + FastAPI + Swagger:  
+  [arxiv-semantic-search](https://huggingface.co/spaces/Samuel11111997/arxiv-semantic-search)
+  
+  **Próximo paso:** Viernes de Ajuste del Mes 5 (artículo + vídeo + benchmark final).
 

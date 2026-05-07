@@ -3,7 +3,7 @@
 **Proyecto:** ai-mastery  
 **Repositorio:** https://github.com/spl248/ai-mastery  
 **Objetivo global:** Plan Definitivo v4.2 – De cero a mejor ingeniero IA + agencia.  
-**Estado actual:** Semana 19 completada. Próximo paso: Semana 20 (Buscador semántico de papers).
+**Estado actual:** Semana 20 completada. Próximo paso: Viernes de Ajuste del Mes 5.
 
 ## 🧠 Quién eres y cómo trabajas
 - Eres Samuel, trabajas en paralelo con un empleo financiador (mañanas y fines de semana).
@@ -90,6 +90,7 @@ ai-mastery/
 - ✅ HyDE implementado, validado y comando hyde-query integrado en el CLI (CI/CD verde).
 - ✅ Reranking con cross‑encoder implementado y validado. Pipeline RAG completo.
 - ✅ Benchmark de embeddings completado (Mistral vs TinyLlama). Mistral seleccionado como modelo principal (Recall@3 100%, MRR 0.87).
+- ✅ Buscador semántico de papers desplegado en Hugging Face Spaces (FastAPI + Swagger + Mistral).
 ### Viernes de Ajuste — Semana 17
 - ✅ Artículo técnico en Medium publicado.
 - ✅ Vídeo demo en YouTube subido.
@@ -114,6 +115,7 @@ ai-mastery/
 - ✍️ Artículo fine‑tuning: https://medium.com/@spulido248/fine-tuning-de-llama-3-2-con-unsloth-el-siguiente-nivel-de-la-especializaci%C3%B3n-en-ia-9c909337c8e6
 - ✍️ Artículo RAG (HyDE + reranking): https://medium.com/@spulido248/pipeline-rag-de-%C3%A9lite-hyde-y-reranking-con-cross-encoder-local-74cc35a6eb0e
 - 🎬 Vídeo demo RAG: https://youtu.be/qfLp8EanEmc
+- 🌐 Demo buscador semántico: https://huggingface.co/spaces/Samuel11111997/arxiv-semantic-search
 
 ## 🔔 Notificaciones
 - **Slack:** `#alertas-prefect` activo con avisos de Prefect Cloud.
@@ -124,7 +126,7 @@ ai-mastery/
 
 ## 🧪 Estado técnico
 - **Tests pasando:** 41
-- Último commit: [completar tras el push]
+- Último commit: e3373e4 (Cierre Semana 19: benchmark de embeddings Mistral vs TinyLlama)
 - **CI/CD:** ✅ Verde
 - **Archivos importantes recientes:** `Dockerfile`, `.github/workflows/ci.yml` (job docker), `flows/bot_flow.py`, `prefect.yaml`, `crew_module.py`, `bot_integrator.py`, `app.py`, `db_manager.py`, `prompt_loader.py`, `prompts/default_prompts.yaml`, `scripts/fine_tune.py`, `hyde.py`, `reranker.py`, `scripts/benchmark_embeddings.py`.
 
