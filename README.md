@@ -176,7 +176,7 @@ ai-mastery/
 - **Semana 20 (completada):**  
   🔍 Buscador semántico de papers de arXiv desplegado.  
   🌐 Demo pública en Hugging Face Spaces con Mistral + FastAPI + Swagger:  
-  [arxiv-semantic-search](https://huggingface.co/spaces/Samuel11111997/arxiv-semantic-search)
+  [arxiv-semantic-search] (https://samuel11111997-arxiv-semantic-search.hf.space/docs).
   
   **Próximo paso:** Viernes de Ajuste del Mes 5 (artículo + vídeo + benchmark final).
 

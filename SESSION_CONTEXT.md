@@ -2,7 +2,7 @@
 
 **Proyecto:** ai-mastery  
 **Repositorio:** https://github.com/spl248/ai-mastery  
-**Objetivo global:** Plan Definitivo v4.2 – De cero a mejor ingeniero IA + agencia.  
+**Objetivo global:** Plan Definitivo v4.3 – De cero a mejor ingeniero IA + agencia.  
 **Estado actual:** Semana 20 completada. Próximo paso: Viernes de Ajuste del Mes 5.
 
 ## 🧠 Quién eres y cómo trabajas
@@ -115,7 +115,7 @@ ai-mastery/
 - ✍️ Artículo fine‑tuning: https://medium.com/@spulido248/fine-tuning-de-llama-3-2-con-unsloth-el-siguiente-nivel-de-la-especializaci%C3%B3n-en-ia-9c909337c8e6
 - ✍️ Artículo RAG (HyDE + reranking): https://medium.com/@spulido248/pipeline-rag-de-%C3%A9lite-hyde-y-reranking-con-cross-encoder-local-74cc35a6eb0e
 - 🎬 Vídeo demo RAG: https://youtu.be/qfLp8EanEmc
-- 🌐 Demo buscador semántico: https://huggingface.co/spaces/Samuel11111997/arxiv-semantic-search
+- 🌐 Demo buscador semántico: (https://samuel11111997-arxiv-semantic-search.hf.space/docs)
 
 ## 🔔 Notificaciones
 - **Slack:** `#alertas-prefect` activo con avisos de Prefect Cloud.
