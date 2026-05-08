@@ -126,7 +126,7 @@ ai-mastery/
 
 ## 🧪 Estado técnico
 - **Tests pasando:** 41
-- Último commit: e3373e4 (Cierre Semana 19: benchmark de embeddings Mistral vs TinyLlama)
+- Último commit: 7c9ae8a (Cierre Semana 20: documentación actualizada con demo pública)
 - **CI/CD:** ✅ Verde
 - **Archivos importantes recientes:** `Dockerfile`, `.github/workflows/ci.yml` (job docker), `flows/bot_flow.py`, `prefect.yaml`, `crew_module.py`, `bot_integrator.py`, `app.py`, `db_manager.py`, `prompt_loader.py`, `prompts/default_prompts.yaml`, `scripts/fine_tune.py`, `hyde.py`, `reranker.py`, `scripts/benchmark_embeddings.py`.
 
