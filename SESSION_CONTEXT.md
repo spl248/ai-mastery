@@ -3,7 +3,7 @@
 **Proyecto:** ai-mastery  
 **Repositorio:** https://github.com/spl248/ai-mastery  
 **Objetivo global:** Plan Definitivo v4.3 – De cero a mejor ingeniero IA + agencia.  
-**Estado actual:** Semana 20 completada. Próximo paso: Viernes de Ajuste del Mes 5.
+**Estado actual:** Mes 5 y Viernes de Ajuste completados. Próximo paso: Mes 6 (Open Source y Marca Personal).
 
 ## 🧠 Quién eres y cómo trabajas
 - Eres Samuel, trabajas en paralelo con un empleo financiador (mañanas y fines de semana).
@@ -91,6 +91,11 @@ ai-mastery/
 - ✅ Reranking con cross‑encoder implementado y validado. Pipeline RAG completo.
 - ✅ Benchmark de embeddings completado (Mistral vs TinyLlama). Mistral seleccionado como modelo principal (Recall@3 100%, MRR 0.87).
 - ✅ Buscador semántico de papers desplegado en Hugging Face Spaces (FastAPI + Swagger + Mistral).
+### Viernes de Ajuste — Mes 5
+- ✅ Benchmark final documentado (Mistral 100% Recall@3, MRR 0.87).
+- ✅ Artículo técnico en Medium publicado.
+- ✅ Vídeo demo en YouTube subido.
+- ✅ Documentación actualizada (README, SESSION CONTEXT, PLAN DE SEGUIMIENTO).
 ### Viernes de Ajuste — Semana 17
 - ✅ Artículo técnico en Medium publicado.
 - ✅ Vídeo demo en YouTube subido.
@@ -116,13 +121,15 @@ ai-mastery/
 - ✍️ Artículo RAG (HyDE + reranking): https://medium.com/@spulido248/pipeline-rag-de-%C3%A9lite-hyde-y-reranking-con-cross-encoder-local-74cc35a6eb0e
 - 🎬 Vídeo demo RAG: https://youtu.be/qfLp8EanEmc
 - 🌐 Demo buscador semántico: (https://samuel11111997-arxiv-semantic-search.hf.space/docs)
+- ✍️ Artículo cierre Mes 5: https://medium.com/@spulido248/c%C3%B3mo-desplegu%C3%A9-un-buscador-sem%C3%A1ntico-de-papers-con-mistral-y-por-qu%C3%A9-mi-benchmark-dict%C3%B3-la-88a74c815834
+- 🎬 Vídeo demo cierre Mes 5: https://youtu.be/gaSSfUFhpYQ
 
 ## 🔔 Notificaciones
 - **Slack:** `#alertas-prefect` activo con avisos de Prefect Cloud.
 - **Triggers:** `Failed` y `Crashed`.
 
 ## 🔜 Próximo paso inmediato
-**Semana 20:** Buscador semántico de papers de IA – Indexa abstracts de arXiv. API con FastAPI y Swagger para consultas.
+**Mes 6:** Semana 21 – Contribuciones a LangChain / CrewAI.
 
 ## 🧪 Estado técnico
 - **Tests pasando:** 41

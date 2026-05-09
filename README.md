@@ -65,7 +65,7 @@ pytest
 ai-mastery/
 ├── .github/workflows/ci.yml
 ├── src/ai_mastery/
-│ ├── init.py
+│ ├── __init__.py
 │ ├── cli.py
 │ ├── utils.py
 │ ├── scraper.py
@@ -177,6 +177,9 @@ ai-mastery/
   🔍 Buscador semántico de papers de arXiv desplegado.  
   🌐 Demo pública en Hugging Face Spaces con Mistral + FastAPI + Swagger:  
   [arxiv-semantic-search] (https://samuel11111997-arxiv-semantic-search.hf.space/docs).
-  
-  **Próximo paso:** Viernes de Ajuste del Mes 5 (artículo + vídeo + benchmark final).
+- **Viernes de Ajuste (Mes 5):**  
+  🧪 Benchmark final: Mistral Recall@3 100% (MRR 0.87) vs TinyLlama Recall@3 20% (MRR 0.35).  
+  ✍️ [Artículo: Cómo desplegué un buscador semántico de papers con Mistral](https://medium.com/@spulido248/c%C3%B3mo-desplegu%C3%A9-un-buscador-sem%C3%A1ntico-de-papers-con-mistral-y-por-qu%C3%A9-mi-benchmark-dict%C3%B3-la-88a74c815834)  
+  🎬 [Vídeo demo del Space](https://youtu.be/gaSSfUFhpYQ)
 
+  **Próximo paso:** Mes 6 – Contribución Open Source, Marca Personal y Lanzamiento.
