@@ -3,7 +3,7 @@
 **Proyecto:** ai-mastery  
 **Repositorio:** https://github.com/spl248/ai-mastery  
 **Objetivo global:** Plan Definitivo v4.3 – De cero a mejor ingeniero IA + agencia.  
-**Estado actual:** Mes 5 y Viernes de Ajuste completados. Próximo paso: Mes 6 (Open Source y Marca Personal).
+**Estado actual:** Semana 21 del Mes 6 completada. PR en revisión. Próximo paso: Semana 22 (Librería open source).
 
 ## 🧠 Quién eres y cómo trabajas
 - Eres Samuel, trabajas en paralelo con un empleo financiador (mañanas y fines de semana).
@@ -67,6 +67,9 @@ ai-mastery/
 ### Mes 2 (5/5)
 - Cliente Ollama, agente LangChain (2 herramientas), ChromaDB, asistente research (genera .md), post LinkedIn.
 
+### Mes 6 (en progreso)
+- ✅ Pull request #5769 abierto en CrewAI (bug #4345 corregido y pendiente de revisión).
+
 ### Mes 3 (5/5)
 - Playwright extrae ofertas a JSON
 - CrewAI con 3 agentes + CV en PDF
@@ -123,13 +126,14 @@ ai-mastery/
 - 🌐 Demo buscador semántico: (https://samuel11111997-arxiv-semantic-search.hf.space/docs)
 - ✍️ Artículo cierre Mes 5: https://medium.com/@spulido248/c%C3%B3mo-desplegu%C3%A9-un-buscador-sem%C3%A1ntico-de-papers-con-mistral-y-por-qu%C3%A9-mi-benchmark-dict%C3%B3-la-88a74c815834
 - 🎬 Vídeo demo cierre Mes 5: https://youtu.be/gaSSfUFhpYQ
+- 🛠️ PR CrewAI #5769: https://github.com/crewAIInc/crewAI/pull/5769
 
 ## 🔔 Notificaciones
 - **Slack:** `#alertas-prefect` activo con avisos de Prefect Cloud.
 - **Triggers:** `Failed` y `Crashed`.
 
 ## 🔜 Próximo paso inmediato
-**Mes 6:** Semana 21 – Contribuciones a LangChain / CrewAI.
+**Semana 22:** Crear y publicar tu propia librería open source en PyPI.
 
 ## 🧪 Estado técnico
 - **Tests pasando:** 41
